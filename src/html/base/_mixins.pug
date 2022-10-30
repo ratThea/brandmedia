@@ -1,0 +1,208 @@
+mixin subscribe_form()
+    form.subscribe-form
+            a.subscribe-form__link(href="#" title="mail")
+            .subscribe-form__body
+                h3.subscribe-form__title join now to our newsletter
+                label.default-form__label(for="subscribe") Get the latest news of BrandMedia
+                input.default-form__input#subscribe(type="email" name="user-email" required placeholder="Your email address")
+                button.button.button_form(title="Sign Up" type="submit") Sign up
+
+//- Формирует HTML-разметку элемента page-title
+//- @param {string} title Заголовок
+//- @param {string} subtitle Подзаголовок
+//- @param {string} name имя input формы поиска
+mixin page_title(title, subtitle, name)
+    .page-title
+        .page-title__info
+            h3.page-title__header= title
+            span.page-title__subtitle= subtitle
+        form.default-form.default-form_search
+            label.default-form__label
+                input.default-form__input(type="search", name=name placeholder="Search")
+            button.default-form__submit(title="Search")
+                i.fa-solid.fa-magnifying-glass
+
+//- Формирует HTML-разметку элемента li > a с нужными классами, текстом и url:
+//- @param {string} classLi Класс элемента li
+//- @param {string} classA Класс элемента a
+//- @param {string} href Атрибут href
+//- @param {string} html html ссылки
+//- @param {boolean} submenu Есть ли подменю
+mixin create_nav_item(classLi, classA, html, href, submenu)
+    li(class=classLi)
+        a(class=classA href=href ? href : "#")!= html
+            if(submenu)
+                span.submenu-toggler(data-action="submenu")
+                    i.fa-solid.fa-caret-left
+        block
+
+//- Формирует HTML-разметку ссылки-кнопки
+//- @param {string} href Адрес ссылки
+//- @param {string} text Текст кнопки
+//- @param {string} modification Модификатор класса
+mixin button_link(text, modification, href)
+    - const className = modification ? `button button_${ modification }` : "button";
+    a(class=className href=href ? href : "#" title=text)
+        span.button__content= text
+
+//- Формирует HTML-разметку навигации в шапке.
+//- @param {array} data массив с объектами вида { href, html, submenu: [ { href, text } ] }
+mixin header_navigation(data)
+    nav.main-header__menu#header-menu
+        ul.main-header__menu-list
+            each item in data
+                -
+                    const { href, html, submenu } = item;
+                    const classLi = (href === "index.html") ? "main-header__menu-list-item home" : "main-header__menu-list-item";
+                +create_nav_item(classLi, "main-header__menu-link", html, href, submenu)
+                    if(submenu)
+                        .submenu
+                            ul.submenu__list
+                                each item in submenu
+                                    - const { href, text } = item;
+                                    +create_nav_item("submenu__list-item", "submenu__link", text, href)
+
+//- Формирует HTML-разметку навигаций в подвале.
+//- @param {object} data Объект вида { header, items: [ { href, html } ] }
+mixin footer_navigation(data)
+    - const { header, items } = data;
+    .main-footer__nav
+        h6.main-footer__nav-header!= header
+        ul.main-footer__nav-list
+            each item in items
+                - const { href, text } = item;
+                +create_nav_item("main-footer__nav-list-item", "main-footer__nav-link", text, href)
+    //- end of footer-nav
+
+//- Формирует HTML-разметку табов в секции about-offers
+//- @param {object} data Объект вида { header: { title, subtitle }, article: { header, text, image } }
+mixin about_offers_info(data)
+    .about-offers__info#about-tabs
+        .about-offers__info-header
+            each item in data
+                span.about-offers__info-button
+                    span.about-offers__info-button-title= item.header.title
+                    span.about-offers__info-button-subtitle= item.header.subtitle
+        //- end of info-header
+        .about-offers__info-body
+            each item in data
+                article.about-article
+                    .about-article__content
+                        .about-article__description
+                            h5.about-article__header
+                                a(href=makeHref(item.article))= item.article.header
+                            p.about-article__text= item.article.text
+                        if("image" in item.article)
+                            .about-article__image
+                                img(src=item.article.image.src alt=item.article.image.alt title=item.article.image.alt data-description=`Описание картинки "${ item.article.image.alt }"`)
+                                span.image-popup#image-popup(data-action="image-popup")
+                    if(item.article.buttons)
+                        .about-article__buttons
+                            each button in item.article.buttons
+                                +button_link(button.text, button.modification, button.href)
+        //- end of info-body
+
+//- Формирует HTML-разметку элемента "service-info" (в секции "services")
+//- @param {object} item Объект вида { className, href, data: { poster: { header, image: { src, alt }, slogan, title }, description: { header, text, button: { text } } } }
+mixin service-info(item)
+    div(class=`service-info service-info_${ item.className }`)
+        .service-info__poster
+            h2.service-info__poster-header= item.data.poster.header
+            .service-info__poster-data-wrapper
+                img.service-info__poster-image(src=item.data.poster.image.src alt=item.data.poster.image.alt title=item.data.poster.image.alt)
+                .service-info__poster-data
+                    span.service-info__poster-slogan= item.data.poster.slogan
+                    h3.service-info__poster-title= item.data.poster.title
+        //- end of poster
+        .service-info__poster-description
+            h4.service-info__header
+                a(href=makeHref(item))!= item.data.description.header
+            p.service-info__text= item.data.description.text
+            +button_link(item.data.description.button.text, item.className, makeHref(item))
+        //- end of poster-description
+    //- end of info
+
+//- Формирует HTML-разметку элемента li.comment-list-item
+//- @param {object} item Объект вида { author, text, date: { href, text }, topic: { href, text }  }
+mixin recent_comment(item)
+    li.comments__list-item
+        p.comments__content!= `<span class="comments__author">${ item.author } says:</span> ${ item.text }`
+        span.comments__data
+            span.comments__post-info!= `<a class="comments__post-date" href="${ makeHref(item.date) }">${ item.date.text }</a> in <a class="comments__topic-name" href="${ makeHref(item.topic) }">${ item.topic.text }</a>`
+
+//- Формирует HTML-разметку элемента div.blog-post
+//- @param {object} item Объект вида { title, href, date, comments: { href, count } categories: [ { href, name } ] author: { href, name } , text: [] }
+mixin blog_post(item)
+    .blog-post
+        .blog-post__header
+            .blog-post__header-content
+                h4.blog-post__title
+                    a(href=makeHref(item))= item.title
+                -
+                    const categories = item.categories.reduce((result, current) => {
+                        result.push(`<a href="${ makeHref(current) }">${ current.name }</a>`);
+                        return result;
+                    }, []).join(", ");
+
+                .blog-post__info!= `Posted by <a href="${ makeHref(item.author) }" class="blog-post__author">${ item.author.name }</a> on <time class="blog-post__date"><a href="${ makeHref(item.date) }">${ item.date.text }</a></time>Categories <span class="blog-post__categories">${ categories }</span>`
+            a.blog-post__comments(href=makeHref(item.comments))!= `<i class="fa-solid fa-message"></i> <span class="blog-post__comments-count">${ item.comments.count }</span>`
+        .blog-post__image-wrapper
+            .blog-post__image-preview
+        .blog-post__content
+            each p in item.text
+                p.blog-post__text!= p
+        .blog-post__buttons
+            +button_link("Read More", "plus")
+            +button_link("Share This", "share")
+
+//- Формирует HTML-разметку элемента team-item
+//- @param {object} item Объект вида { href, className, header, text, button: { html, modification }  }
+mixin team_item(item)
+    div(class=`team-item team-item_${ item.className }`)
+        h4.team-item__header
+            a(href=makeHref(item))= item.header
+        p.team-item__text= item.text
+        +button_link(item.button.html, item.button.modification, makeHref(item))
+
+//- Формирует HTML-разметку элемента logo-design-example
+//- @param {object} item Объект вида { href, header, roles: [ { href, text } ], buttons: { study, readMore } }
+mixin logo_design_example(item)
+    .logo-design-example
+        .logo-design-example__image-wrapper
+            .logo-design-example__image-preview
+        h4.logo-design-example__header
+            a(href=makeHref(item))= item.header
+        .logo-design-example__role Role:
+            ul.logo-design-example__role-list
+                each role in item.roles
+                    +create_nav_item("logo-design-example__role-list-item", "logo-design-example__role-link", role.text, makeHref(role))
+        .logo-design-example__buttons
+            +button_link("Read More", "plus", item.buttons.readMore)
+            +button_link("Case Study", "study", item.buttons.study)
+
+//- Формирует HTML-разметку элемента service-example
+//- @param {object} item Объект вида { header, image: { src, alt }, text, href }
+mixin service_example_content(item)
+    .service-example
+        .service-example__content
+            .service-example__image
+                img(src=item.image.src alt=item.image.alt title=item.image.alt data-description=`Описание картинки "${item.image.alt}"`)
+                span.image-popup#image-popup(data-action="image-popup")
+            .service-example__description
+                h5.service-example__description-header
+                    a(href=makeHref(item))= item.header
+                p.service-example__description-text= item.text
+        .service-example__buttons
+            +button_link("Read More", "plus")
+            +button_link("Get Support", "support")
+            +button_link("Examples", "examples")
+            +button_link("Get in touch", "touch")
+
+//- Формирует HTML-разметку элемента service-presentation-item
+//- @param {object} item Объект вида { href, title, subtitle, description }
+mixin service_presentation_item(item)
+    .service-presentation-item
+        h3.service-presentation-item__title
+            a(href=makeHref(item))= item.title
+        span.service-presentation-item__subtitle= item.subtitle
+        p.service-presentation-item__description= item.description

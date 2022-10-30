@@ -1,0 +1,9 @@
+header.main-header
+    .main-header__content.container
+        .main-header__logo
+            a.main-header__logo-link(href="index.html")
+                img(src="../images/common/logo.png" alt="BrandMedia" title="Brandmedia")
+            span.main-header__slogan We love beautiful things
+        +header_navigation(navigation)
+        button.main-header__toggle#main-menu-toggle(data-action="main")
+            i.fa-solid.fa-bars

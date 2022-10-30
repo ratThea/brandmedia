@@ -1,0 +1,109 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../base/variables" as vars;
+@use "../base/mixins" as mix;
+@use "../base/functions" as funcs;
+@use "../base/extentsions";
+
+@use "../components/contact/contact-info";
+@use "../components/contact/contact-map";
+
+// html/pages/contact.pug
+.main-contact {
+  @extend %no-border;
+  &__content {
+    flex-direction: column;
+  }
+  &__info-wrapper {
+    display: flex;
+  }
+  &__contact-data {
+    @include mix.width-percent-by-container(315);
+  }
+  &__feedback {
+    flex-grow: 1;
+    margin-right: 40px;
+  }
+  &__message {
+    position: relative;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    &:not(:last-child) {
+      border-bottom: 1px solid #121215;
+      &::after {
+        @extend %pseudo-element;
+        left: 0;
+        bottom: -2px;
+        height: 1px;
+        width: 100%;
+        background: #1F2024;
+      }
+    }
+  }
+  &__message-header {
+    margin-bottom: 25px;
+  }
+  &__message-title {
+    margin-bottom: 5px;
+    font-family: map.get(vars.$fonts, "nevis", "Bold"), sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  &__message-subtitle {
+    font-family: map.get(vars.$fonts, "Helvetica", "Bold"), sans-serif;
+    font-size: 12px;
+    color: #b2c1ce;
+  }
+  &__message-text {
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Roman"), sans-serif;
+    font-size: 12px;
+    color: #67747f;
+  }
+
+  .contact-map {
+    margin-bottom: 40px;
+  }
+
+  .page-title {
+    margin-bottom: 40px;
+  }
+
+  .default-form_message {
+      display: flex;
+      flex-direction: column;
+      width: 555px;
+
+    .default-form__line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .default-form__input-wrapper {
+      display: flex;
+    }
+
+    .default-form__input-wrapper_full {
+      width: 100%;
+
+      input,
+      textarea {
+        width: 99%;
+      }
+
+      textarea {
+        height: 190px;
+      }
+    }
+
+    .default-form__input {
+      width: 240px;
+      margin-right: 5px;
+      border-color: #26272A;
+    }
+  }
+}

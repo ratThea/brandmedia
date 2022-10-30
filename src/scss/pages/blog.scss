@@ -1,0 +1,79 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../base/variables" as vars;
+@use "../base/mixins" as mix;
+@use "../base/functions" as funcs;
+@use "../base/extentsions";
+
+@use "../components/blog/aside-nav";
+@use "../components/blog/subscription-rss";
+@use "../components/blog/recent-acticity";
+@use "../components/blog/comments";
+@use "../components/blog/blog-post";
+
+// html/pages/blog.pug
+.blog {
+  padding-bottom: 40px;
+  box-shadow: inset 0 -1px 0 #141417;
+  border-color: #1D1D20;
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+  &__page-content {
+    display: flex;
+    justify-content: space-between;
+    min-height: 1415px;
+  }
+  &__posts-wrapper {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #25292E;
+    border-left: 1px solid #353B42;
+    border-top: 1px solid #353B42;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  &__posts-pagination {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-top: 1px solid #1C1F22;
+    box-shadow: inset 0 1px 0 #DFE5E9;
+    background: linear-gradient(to top, #97A4AC 0%, #C2CED3 100%);
+
+    a {
+      display: inline-flex;
+      padding: 8px 10px;
+      border-bottom: 1px solid #B8C1C7;
+      font-family: map.get(vars.$fonts, "Helvetica", "LTStd Medium"), sans-serif;
+      font-size: 14px;
+      background: #8799A3;
+      box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, .2);
+      border-radius: 5px;
+      color: #fff;
+      &:hover {
+        text-decoration: none;
+        background: #5C6F7B;
+      }
+    }
+  }
+
+  .page-title {
+    margin-bottom: 40px;
+  }
+}
+
+.main-aside {
+  @include mix.width-percent-by-container(320);
+  border-top: 1px solid #4D5661;
+  border-left: 1px solid #4D5661;
+  border-radius: 5px;
+  background: #363C44;
+  overflow: hidden;
+}

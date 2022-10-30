@@ -1,0 +1,68 @@
+section.portfolio
+    .container.portfolio__content
+        +page_title(title, "This is subtitle", "portfolio-search")
+        .portfolio-tabs#portfolio-tabs
+            .portfolio-tabs__header
+                span.portfolio-tabs__button.portfolio-tabs__button_favorite
+                    i.fa-solid.fa-heart
+                span.portfolio-tabs__button everything
+                span.portfolio-tabs__button web design
+                span.portfolio-tabs__button logo design
+                span.portfolio-tabs__button icon design
+                span.portfolio-tabs__button app interface
+                span.portfolio-tabs__button print
+                span.portfolio-tabs__button illustration
+                span.portfolio-tabs__button others
+            .portfolio-tabs__body
+                .portfolio-tabs__content favorite content (для него дизайна нет)
+                .portfolio-tabs__content everything content (для него дизайна нет)
+                .portfolio-tabs__content web design content (для него дизайна нет)
+                .portfolio-tabs__content
+                    .portfolio__logo-design
+                        .slider.slider_portfolio
+                            .slider__dots#portfolio-slider-dots
+                            .slider__screen#portfolio-slider
+                                .slider__slide
+                                    img(src="images/sliders/portfolio/web_design_1.png" alt="Web design")
+                                .slider__slide
+                                    img(src="images/sliders/portfolio/brushes_2.png" alt="Brushes")
+                                .slider__slide
+                                    img(src="images/sliders/portfolio/react_3.png" alt="React")
+                                .slider__slide
+                                    img(src="images/sliders/portfolio/responsive_4.png" alt="Responsive Design")
+                        .portfolio__slider-description
+                            .portfolio__slider-description-header
+                                span.portfolio__slider-description-type Featured Project
+                                h4.portfolio__slider-description-title
+                                    a(href="#") Quisque eget odio ac lectus vestibulum
+                                span.portfolio__slider-description-role Role:
+                                    ul.portfolio__slider-description-list
+                                        +create_nav_item("portfolio__slider-description-list-item", "portfolio__slider-description-link", "Logo Design", "#")
+                                        +create_nav_item("portfolio__slider-description-list-item", "portfolio__slider-description-link", "Brand Identy", "#")
+                            .portfolio__slider-description-body
+                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla. Maecenas gravida lacus non leo congue elementum. Praesent tincidunt lectus nec felis hendrerit id blandit ante consequat. Proin bibendum, arcu eu lobortis egestas, massa leo ullamcorper dolor, non ullamcorper neque magna quis diam. Praesent interdum neque id nulla accumsan euismod. Curabitur sit amet ornare purus. Aliquam erat volutpat. que id nulla accumsan euismod. Curabitur sit amet ornaque id nulla accumsan euismod. Curabitur sit amet ornaque id nulla accumsan euismod. Curabitur sit amet ornaque id nulla accumsan euismod. Curabitur sit amet ornaque id nulla accumsan euismod. Curabitur sit amet ornaque id nulla accumsan euismod. Curabitur sit amet orna
+                    .portfolio__logo-design-buttons
+                        +button_link("Case Study", "study")
+                        +button_link("Testimonials", "testimonials")
+                        +button_link("Read More", "plus")
+                        +button_link("Get in touch", "touch")
+                    .portfolio__logo-design-examples
+
+                        //- Так выводить logoDesignExamples, если их данные отличаются (на данный момент они в дизайне одинаковы)
+                        //- each example in logoDesignExamples
+                            //- +logo_design_example(example)
+
+                        //- Переписать, если будут разные:
+                        while _logoDesignExamplesCount > 0
+                            +logo_design_example(logoDesignExamples[0])
+                            - _logoDesignExamplesCount--;
+
+                .portfolio-tabs__content icon design content (для него дизайна нет)
+                .portfolio-tabs__content app interface content (для него дизайна нет)
+                .portfolio-tabs__content print content (для него дизайна нет)
+                .portfolio-tabs__content illustration content (для него дизайна нет)
+                .portfolio-tabs__content others content (для него дизайна нет)
+
+section.subscription
+    .container.subscription__content
+        +subscribe_form

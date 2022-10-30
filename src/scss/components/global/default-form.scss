@@ -1,0 +1,88 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+// Общие стили:
+.default-form {
+  display: flex;
+  &__label {
+    display: flex;
+    &_required::after {
+      margin-left: 5px;
+      content: "*";
+      font-family: map.get(vars.$fonts, "Myriad Pro", "Regular"), sans-serif;
+      color: #b2c1ce;
+    }
+  }
+  &__input,
+  &__textarea {
+    padding: 7.5px 15px;
+    border-bottom: 1px solid rgba(#fff, .3);
+    border-radius: 5px;
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Medium"), sans-serif;
+    font-size: 12px;
+    box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, .7);
+    background: #0D0D0E;
+    color: #fff;
+    &::placeholder {
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(#000, 0.4);
+    }
+  }
+  &__submit {
+    cursor: pointer;
+  }
+
+  // Модификаторы:
+  &_search {
+    position: relative;
+    border-left: 1px solid #747B8B;
+    background: linear-gradient(45deg, #757C8D 0%, #A9AFB9 100%);
+    &::before {
+      @extend %pseudo-element;
+      top: 0;
+      left: -2px;
+      width: 1px;
+      height: 100%;
+      background: #D8DADD;
+    }
+
+    .default-form__label {
+      width: funcs.calculate-percent(155, 215);
+    }
+
+    .default-form__input {
+      margin: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .default-form__submit {
+      padding: 5px 8px;
+      border-bottom: 1px solid #848B9B;
+      border-left: 1px solid #878A8F;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background: linear-gradient(to bottom, #4A4D52 0%, #65686E 100%);
+      cursor: pointer;
+      &:hover {
+        background: linear-gradient(to top, #4A4D52 0%, #65686E 100%);
+      }
+      &:active {
+        background: #4A4D52;
+      }
+
+      i[class^="fa-"] {
+        font-size: 14px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, .2);
+        color: rgba(#000, .7);
+      }
+    }
+  }
+}

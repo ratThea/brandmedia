@@ -1,0 +1,97 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+// Общие стили:
+.service-info {
+  display: inline-flex;
+  flex-direction: column;
+  @include mix.width-percent-by-container(map.get(vars.$service-info, "base-width"));
+  color: #fff;
+  &__poster {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    padding: 15px 15px 25px 15px;
+    border-top: 1px solid;
+    border-radius: 5px;
+    text-shadow: 0 -1px 0 rgba(#000, .35);
+    box-shadow: 0 2px 3px 0 rgba(#000, .5);
+  }
+  &__poster-header {
+    margin-bottom: 25px;
+    font-family: map.get(vars.$fonts, "nevis", "Bold"), sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  &__poster-data-wrapper {
+    display: flex;
+    font-family: map.get(vars.$fonts, "Helvetica", "Bold"), sans-serif;
+  }
+  &__poster-image {
+    margin-right: 20px;
+    align-self: center;
+  }
+  &__poster-slogan {
+    display: inline-flex;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(#fff, .15);
+    font-size: 13px;
+  }
+  &__poster-title {
+    font-size: 30px;
+  }
+  &__poster-description {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  &__header {
+    position: relative;
+    margin-bottom: 30px;
+    padding-right: 20px;
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Bold"), sans-serif;
+    font-size: 18px;
+    &::after {
+      @extend %sprite-images;
+      @extend %pseudo-element;
+      top: 0;
+      right: 0;
+    }
+  }
+  &__text {
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+
+  .button {
+    align-self: start;
+    margin-top: auto;
+  }
+
+  // Модификаторы:
+  @each $name, $data in map.get(vars.$service-info, "types") {
+    &_#{ $name } {
+
+      .service-info__poster {
+        border-color: map.get($data, "border-color");
+        background: radial-gradient(ellipse at 50% -70%, map.get($data, "background", "from") 0%, map.get($data, "background", "to") 100%);
+      }
+
+      .service-info__header::after {
+            width: map.get($data, "after", "width");
+            height: map.get($data, "after", "height");
+            background-position: map.get($data, "after", "background-position", "x") map.get($data, "after", "background-position", "y");
+      }
+    }
+  }
+}

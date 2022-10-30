@@ -1,0 +1,89 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+// Общие стили:
+.slider {
+  &__dots {
+    display: flex;
+    align-items: center;
+  }
+  &__dot {
+    display: block;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  &__slide {
+
+    img {
+      pointer-events: none;
+    }
+  }
+
+  // Модификаторы:
+  &_presentation {
+
+    .slider__dots {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .slider__dot {
+      width: 10px;
+      height: 10px;
+      background: linear-gradient(to top, #4C4E51 0%, #28292B);
+      box-shadow: inset 0 1px 2px rgba(#000, .75), 0 1px 0 rgba(#fff, .75);
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+      &:hover,
+      &:active {
+        background: #28292B;
+      }
+      &.active {
+        background: #3A9CD0;
+      }
+    }
+  }
+
+  &_portfolio {
+    position: relative;
+
+    .slider__dots {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+    }
+
+    .slider__dot {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 6px;
+      height: 6px;
+      background: #385F7F;
+      box-shadow: inset 0 1px 2px rgba(#000, .75), 0 1px 0 rgba(#fff, .35);
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+      &::before {
+        display: none;
+        content: "";
+        width: 2px;
+        height: 2px;
+        background: #fff;
+        border-radius: 50%;
+      }
+      &.active::before {
+        display: block;
+      }
+    }
+  }
+}

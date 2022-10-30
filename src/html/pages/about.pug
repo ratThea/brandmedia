@@ -1,0 +1,34 @@
+section.about
+    .container.about__content
+
+        +page_title(title, "This is subtitle", "about-search")
+
+        article.about-article
+            .about-article__content
+                .about-article__description
+                        h5.about-article__header Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla.
+                        p.about-article__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla. Maecenas gravida lacus non leo congue elementum. Praesent tincidunt lectus nec felis hendrerit id blandit ante consequat. Proin bibendum, arcu eu lobortis egestas, massa leo ullamcorper dolor, non ullamcorper neque magna quis diam. Praesent interdum neque id nulla accumsan euismod. Curabitur sit amet ornare purus. Aliquam erat volutpat.
+                .about-article__image
+                    img(src="../images/index/about_us.png" alt="about us" title="About Us" data-description="Описание картинки About Us")
+                    span.image-popup#image-popup(data-action="image-popup")
+            .about-article__buttons
+                +button_link("Read More", "plus")
+                +button_link("Facebook", "facebook")
+                +button_link("Follow Us", "twitter")
+                +button_link("Get in Touch", "touch")
+
+section.team
+    .container.team__content
+        .team__slogan We are able to create anything on something real even dreams
+        .team__description-items
+            each item in teamItems
+                +team_item(item)
+
+section.services
+    .container.services__content
+        each item in serviceInfoItems
+            +service-info(item)
+
+section.subscription
+    .container.subscription__content
+        +subscribe_form

@@ -1,0 +1,74 @@
+section.main-contact
+    .container.main-contact__content
+        +page_title(title, "This is subtitle", "contact-search")
+
+        .main-contact__info-wrapper
+            .main-contact__feedback
+                .main-contact__message
+                    .main-contact__message-header
+                        h3.main-contact__message-title we are online 24 hours
+                        span.main-contact__message-subtitle This is a subtitle
+                    p.main-contact__message-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla. Maecenas gravida lacus non leo congue elementum. Praesent tincidunt lectus nec felis hendrerit id blandit ante consequat. Proin bibendum, arcu eu lobortis egestas, massa leo ullamcorper dolor, non ullamcorper neque magna quis diam. Praesent interdum neque id nulla accumsan euismod. Curabitur sit amet ornare purus. Aliquam erat volutpat.
+                .main-contact__message
+                    .main-contact__message-header
+                        h3.main-contact__message-title email us
+                        span.main-contact__message-subtitle This is a subtitle
+                    form.default-form.default-form_message
+                        .default-form__line
+                            .default-form__input-wrapper
+                                input.default-form__input(name="username", id="username" placeholder="Name" required)
+                                label.default-form__label.default-form__label_required(for="username")
+                            .default-form__input-wrapper
+                                input.default-form__input(name="email", id="email" type="email" placeholder="Email" required)
+                                label.default-form__label.default-form__label_required(for="email")
+                        .default-form__line
+                            .default-form__input-wrapper
+                                input.default-form__input(name="phone", id="phone" placeholder="Phone" required)
+                                label.default-form__label.default-form__label_required(for="phone")
+                            .default-form__input-wrapper
+                                input.default-form__input(name="website", id="website" type="url" placeholder="Website" required)
+                                label.default-form__label.default-form__label_required(for="website")
+                        .default-form__line
+                            .default-form__input-wrapper.default-form__input-wrapper_full
+                                input.default-form__input(name="subject", id="subject" placeholder="Subject" required)
+                                label.default-form__label.default-form__label_required(for="subject")
+                        .default-form__line
+                            .default-form__input-wrapper.default-form__input-wrapper_full
+                                textarea.default-form__input(name="message", id="message" placeholder="Message" required)
+                                label.default-form__label.default-form__label_required(for="message")
+                        .default-form__line
+                            button.button.button_form(title="Sign Up" type="submit") Send
+
+            aside.main-contact__contact-data
+                .contact-map
+                    .contact-map__map-api-element#brandmedia-contact-map
+                .contact-info
+                    h4.contact-info__header contact info
+                    ul.contact-info__list
+                        li.contact-info__list-item
+                            span.contact-info__data-name Email:
+                            a.contact-info__data-value(href="mailto: info@brandmedia.com") info@brandmedia.com
+                        li.contact-info__list-item
+                            span.contact-info__data-name Office:
+                            span.contact-info__data-value
+                                a(href="https://yandex.ru/maps/21190/louisville/?from=api-maps&ll=-85.845146%2C38.147258&origin=jsapi_2_1_79&z=7" target="_blank") Vital Park - 857 on Kentucky
+                        li.contact-info__list-item
+                            span.contact-info__data-name Phone:
+                            span.contact-info__data-value
+                                a(href="tel: 555.456.7683") 555.456.7683
+                        li.contact-info__list-item
+                            span.contact-info__data-name Fax:
+                            span.contact-info__data-value 1-254-576-1645
+                    .contact-info__buttons
+                        +button_link("Follow Us", "twitter")
+                        +button_link("Facebook", "facebook")
+
+
+section.services
+    .container.services__content
+        each item in serviceInfoItems
+            +service-info(item)
+
+section.subscription
+    .container.subscription__content
+        +subscribe_form

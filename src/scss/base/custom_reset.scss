@@ -1,0 +1,119 @@
+// Сброс стилей:
+:focus {
+  outline: none;
+}
+
+::-ms-clear {
+  display: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:disabled,
+[disabled],
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+b, strong {
+  font-weight: inherit;
+}
+
+i,
+em {
+  font-style: inherit;
+}
+
+ul[class],
+ol[class],
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  border-radius: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+textarea {
+  resize: none;
+}
+
+select,
+[type="search"]::-webkit-search-decoration {
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  font-weight: inherit;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}

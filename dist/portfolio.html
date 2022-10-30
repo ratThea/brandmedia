@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/x-icon" href="images/common/favicon.ico" rel="shortcut icon">
+    <link type="Image/x-icon" href="images/common/favicon.ico" rel="icon">
+    <title>Brandmedia | Portfolio</title>
+    <meta name="keywords" content="brandmedia, html, pug, scss, javascript">
+    <meta name="description" content="Brandmedia - тестовая верстка на pug, scss, js.">
+    <script src="https://kit.fontawesome.com/6409aaf1cb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.min.css">
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="main-header__content container">
+        <div class="main-header__logo"><a class="main-header__logo-link" href="index.html"><img src="images/common/logo.png" alt="BrandMedia" title="Brandmedia"></a><span class="main-header__slogan">We love beautiful things</span></div>
+        <nav class="main-header__menu" id="header-menu">
+          <ul class="main-header__menu-list">
+            <li class="main-header__menu-list-item home"><a class="main-header__menu-link" href="index.html"><img src="images/common/home.png" alt="home" title="home"></a>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="about.html">about us<span class="submenu-toggler" data-action="submenu"><i class="fa-solid fa-caret-left"></i></span></a>
+              <div class="submenu">
+                <ul class="submenu__list">
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">App Media</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Branding</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Case Study</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Devices</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Jobs</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Networks</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Tutorials</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="portfolio.html">portfolio</a>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="services.html">services</a>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="blog.html">blog<span class="submenu-toggler" data-action="submenu"><i class="fa-solid fa-caret-left"></i></span></a>
+              <div class="submenu">
+                <ul class="submenu__list">
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">App Media</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Branding</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Case Study</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Devices</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Jobs</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Networks</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Tutorials</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="contact.html">contact</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="main-header__toggle" id="main-menu-toggle" data-action="main"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </header>
+    <div class="main-content">
+      <section class="portfolio">
+        <div class="container portfolio__content">
+          <div class="page-title">
+            <div class="page-title__info">
+              <h3 class="page-title__header">Portfolio</h3><span class="page-title__subtitle">This is subtitle</span>
+            </div>
+            <form class="default-form default-form_search">
+              <label class="default-form__label">
+                <input class="default-form__input" type="search" name="portfolio-search" placeholder="Search"/>
+              </label>
+              <button class="default-form__submit" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          </div>
+          <div class="portfolio-tabs" id="portfolio-tabs">
+            <div class="portfolio-tabs__header"><span class="portfolio-tabs__button portfolio-tabs__button_favorite"><i class="fa-solid fa-heart"></i></span><span class="portfolio-tabs__button">everything</span><span class="portfolio-tabs__button">web design</span><span class="portfolio-tabs__button">logo design</span><span class="portfolio-tabs__button">icon design</span><span class="portfolio-tabs__button">app interface</span><span class="portfolio-tabs__button">print</span><span class="portfolio-tabs__button">illustration</span><span class="portfolio-tabs__button">others</span></div>
+            <div class="portfolio-tabs__body">
+              <div class="portfolio-tabs__content">favorite content (для него дизайна нет)</div>
+              <div class="portfolio-tabs__content">everything content (для него дизайна нет)</div>
+              <div class="portfolio-tabs__content">web design content (для него дизайна нет)</div>
+              <div class="portfolio-tabs__content">
+                <div class="portfolio__logo-design">
+                  <div class="slider slider_portfolio">
+                    <div class="slider__dots" id="portfolio-slider-dots"></div>
+                    <div class="slider__screen" id="portfolio-slider">
+                      <div class="slider__slide"><img src="images/sliders/portfolio/web_design_1.png" alt="Web design"></div>
+                      <div class="slider__slide"><img src="images/sliders/portfolio/brushes_2.png" alt="Brushes"></div>
+                      <div class="slider__slide"><img src="images/sliders/portfolio/react_3.png" alt="React"></div>
+                      <div class="slider__slide"><img src="images/sliders/portfolio/responsive_4.png" alt="Responsive Design"></div>
+                    </div>
+                  </div>
+                  <div class="portfolio__slider-description">
+                    <div class="portfolio__slider-description-header"><span class="portfolio__slider-description-type">Featured Project</span>
+                      <h4 class="portfolio__slider-description-title"><a href="#">Quisque eget odio ac lectus vestibulum</a></h4><span class="portfolio__slider-description-role">Role:
+                        <ul class="portfolio__slider-description-list">
+                          <li class="portfolio__slider-description-list-item"><a class="portfolio__slider-description-link" href="#">Logo Design</a>
+                          </li>
+                          <li class="portfolio__slider-description-list-item"><a class="portfolio__slider-description-link" href="#">Brand Identy</a>
+                          </li>
+                        </ul></span>
+                    </div>
+                    <div class="portfolio__slider-description-body">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla. Maecenas gravida lacus non leo congue elementum. Praesent tincidunt lectus nec felis hendrerit id blandit ante consequat. Proin bibendum, arcu eu lobortis egestas, massa leo ullamcorper dolor, non ullamcorper neque magna quis diam. Praesent interdum neque id nulla accumsan euismod. Curabitur sit amet ornare purus. Aliquam erat volutpat. que id nulla accumsan euismod. Curabitur sit amet ornaque id nulla accumsan euismod. Curabitur sit amet ornaque id nulla accumsan euismod. Curabitur sit amet ornaque id nulla accumsan euismod. Curabitur sit amet ornaque id nulla accumsan euismod. Curabitur sit amet ornaque id nulla accumsan euismod. Curabitur sit amet orna</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio__logo-design-buttons"><a class="button button_study" href="#" title="Case Study"><span class="button__content">Case Study</span></a><a class="button button_testimonials" href="#" title="Testimonials"><span class="button__content">Testimonials</span></a><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_touch" href="#" title="Get in touch"><span class="button__content">Get in touch</span></a>
+                </div>
+                <div class="portfolio__logo-design-examples">
+                  <div class="logo-design-example">
+                    <div class="logo-design-example__image-wrapper">
+                      <div class="logo-design-example__image-preview"></div>
+                    </div>
+                    <h4 class="logo-design-example__header"><a href="#">Quisque eget odio ac lectus</a></h4>
+                    <div class="logo-design-example__role">Role:
+                      <ul class="logo-design-example__role-list">
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Logo Design</a>
+                        </li>
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Brand Identy</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="logo-design-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_study" href="#" title="Case Study"><span class="button__content">Case Study</span></a>
+                    </div>
+                  </div>
+                  <div class="logo-design-example">
+                    <div class="logo-design-example__image-wrapper">
+                      <div class="logo-design-example__image-preview"></div>
+                    </div>
+                    <h4 class="logo-design-example__header"><a href="#">Quisque eget odio ac lectus</a></h4>
+                    <div class="logo-design-example__role">Role:
+                      <ul class="logo-design-example__role-list">
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Logo Design</a>
+                        </li>
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Brand Identy</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="logo-design-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_study" href="#" title="Case Study"><span class="button__content">Case Study</span></a>
+                    </div>
+                  </div>
+                  <div class="logo-design-example">
+                    <div class="logo-design-example__image-wrapper">
+                      <div class="logo-design-example__image-preview"></div>
+                    </div>
+                    <h4 class="logo-design-example__header"><a href="#">Quisque eget odio ac lectus</a></h4>
+                    <div class="logo-design-example__role">Role:
+                      <ul class="logo-design-example__role-list">
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Logo Design</a>
+                        </li>
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Brand Identy</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="logo-design-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_study" href="#" title="Case Study"><span class="button__content">Case Study</span></a>
+                    </div>
+                  </div>
+                  <div class="logo-design-example">
+                    <div class="logo-design-example__image-wrapper">
+                      <div class="logo-design-example__image-preview"></div>
+                    </div>
+                    <h4 class="logo-design-example__header"><a href="#">Quisque eget odio ac lectus</a></h4>
+                    <div class="logo-design-example__role">Role:
+                      <ul class="logo-design-example__role-list">
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Logo Design</a>
+                        </li>
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Brand Identy</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="logo-design-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_study" href="#" title="Case Study"><span class="button__content">Case Study</span></a>
+                    </div>
+                  </div>
+                  <div class="logo-design-example">
+                    <div class="logo-design-example__image-wrapper">
+                      <div class="logo-design-example__image-preview"></div>
+                    </div>
+                    <h4 class="logo-design-example__header"><a href="#">Quisque eget odio ac lectus</a></h4>
+                    <div class="logo-design-example__role">Role:
+                      <ul class="logo-design-example__role-list">
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Logo Design</a>
+                        </li>
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Brand Identy</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="logo-design-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_study" href="#" title="Case Study"><span class="button__content">Case Study</span></a>
+                    </div>
+                  </div>
+                  <div class="logo-design-example">
+                    <div class="logo-design-example__image-wrapper">
+                      <div class="logo-design-example__image-preview"></div>
+                    </div>
+                    <h4 class="logo-design-example__header"><a href="#">Quisque eget odio ac lectus</a></h4>
+                    <div class="logo-design-example__role">Role:
+                      <ul class="logo-design-example__role-list">
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Logo Design</a>
+                        </li>
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Brand Identy</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="logo-design-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_study" href="#" title="Case Study"><span class="button__content">Case Study</span></a>
+                    </div>
+                  </div>
+                  <div class="logo-design-example">
+                    <div class="logo-design-example__image-wrapper">
+                      <div class="logo-design-example__image-preview"></div>
+                    </div>
+                    <h4 class="logo-design-example__header"><a href="#">Quisque eget odio ac lectus</a></h4>
+                    <div class="logo-design-example__role">Role:
+                      <ul class="logo-design-example__role-list">
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Logo Design</a>
+                        </li>
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Brand Identy</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="logo-design-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_study" href="#" title="Case Study"><span class="button__content">Case Study</span></a>
+                    </div>
+                  </div>
+                  <div class="logo-design-example">
+                    <div class="logo-design-example__image-wrapper">
+                      <div class="logo-design-example__image-preview"></div>
+                    </div>
+                    <h4 class="logo-design-example__header"><a href="#">Quisque eget odio ac lectus</a></h4>
+                    <div class="logo-design-example__role">Role:
+                      <ul class="logo-design-example__role-list">
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Logo Design</a>
+                        </li>
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Brand Identy</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="logo-design-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_study" href="#" title="Case Study"><span class="button__content">Case Study</span></a>
+                    </div>
+                  </div>
+                  <div class="logo-design-example">
+                    <div class="logo-design-example__image-wrapper">
+                      <div class="logo-design-example__image-preview"></div>
+                    </div>
+                    <h4 class="logo-design-example__header"><a href="#">Quisque eget odio ac lectus</a></h4>
+                    <div class="logo-design-example__role">Role:
+                      <ul class="logo-design-example__role-list">
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Logo Design</a>
+                        </li>
+                        <li class="logo-design-example__role-list-item"><a class="logo-design-example__role-link" href="#">Brand Identy</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="logo-design-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_study" href="#" title="Case Study"><span class="button__content">Case Study</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="portfolio-tabs__content">icon design content (для него дизайна нет)</div>
+              <div class="portfolio-tabs__content">app interface content (для него дизайна нет)</div>
+              <div class="portfolio-tabs__content">print content (для него дизайна нет)</div>
+              <div class="portfolio-tabs__content">illustration content (для него дизайна нет)</div>
+              <div class="portfolio-tabs__content">others content (для него дизайна нет)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="subscription">
+        <div class="container subscription__content">
+          <form class="subscribe-form"><a class="subscribe-form__link" href="#" title="mail"></a>
+            <div class="subscribe-form__body">
+              <h3 class="subscribe-form__title">join now to our newsletter</h3>
+              <label class="default-form__label" for="subscribe">Get the latest news of BrandMedia</label>
+              <input class="default-form__input" id="subscribe" type="email" name="user-email" required="required" placeholder="Your email address"/>
+              <button class="button button_form" title="Sign Up" type="submit">Sign up</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <footer class="main-footer">
+      <div class="main-footer__content container">
+        <div class="main-footer__navigations">
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Site Navigation</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="index.html">Home</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="about.html">About</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="portfolio.html">Portfolio</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="services.html">Services</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="blog.html">Blog</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Blog Categories</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">App Media</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Branding</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Case Studio</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Devices</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Jobs</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Networks</a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Jobs Board</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Animation</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Brand Identy</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Development</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Graphic Design</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Marketing</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Web Design</a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Connect</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Twitter</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Facebook</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Youtube</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Flickr</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Vimeo</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Tumblr</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="main-footer__copyright">
+          <div class="main-footer__copyright-image"></div>
+          <div class="main-footer__copyright-description">
+            <h6 class="main-footer__copyright-header">BrandMedia<sup>tm</sup></h6>
+            <p class="main-footer__copyright-text">Copyright © 2010-2011 BrandMedia. All rights reserved. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit turpis, semper sed consequat a, malesuada vel neque.</p>
+            <ul class="main-footer__copyright-menu">
+              <li class="main-footer__copyright-menu-item"><a class="main-footer__copyright-menu-link" href="#">Terms & Conditions</a>
+              </li>
+              <li class="main-footer__copyright-menu-item"><a class="main-footer__copyright-menu-link" href="#">Privacy</a>
+              </li>
+              <li class="main-footer__copyright-menu-item"><a class="main-footer__copyright-menu-link" href="#">Contact us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.min.js"></script>
+  </body>
+</html>

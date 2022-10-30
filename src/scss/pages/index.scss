@@ -1,0 +1,213 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../base/variables" as vars;
+@use "../base/mixins" as mix;
+@use "../base/functions" as funcs;
+@use "../base/extentsions";
+
+// html/pages/index.pug
+section {
+  border-bottom: 1px solid;
+}
+
+.presentation {
+  padding: 15px 0;
+  border-bottom-color: #282A31;
+  border-top: 1px solid #282A31;
+  background: #202227;
+  &__content {
+    justify-content: space-between;
+    padding: 35px funcs.calculate-percent(40, map.get(vars.$media, "default", "container-width")) 20px funcs.calculate-percent(40, map.get(vars.$media, "default", "container-width"));
+    border-radius: 5px;
+    background: radial-gradient(circle at center center, #F5F6F7 0%, #828B97 100%);
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: map.get(vars.$fonts, "Myriad Pro", "Black SemiCn Italic"), sans-serif;
+    text-shadow: 0 1px 0 rgba(#fff, .4);
+  }
+  &__title {
+    margin-bottom: 15px;
+    font-size: 15px;
+    line-height: .7;
+    color: #42474f;
+  }
+  &__slogan {
+    margin-bottom: 15px;
+    font-size: 45px;
+    line-height: .7;
+    color: #2a2a2a;
+  }
+  &__subtitle {
+    margin-bottom: 40px;
+    font-family: map.get(vars.$fonts, "Myriad Pro", "Black Italic"), sans-serif;
+    font-size: 15px;
+    line-height: .7;
+    color: #828a95;
+  }
+  &__buttons {
+    display: flex;
+
+    .button:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+  &__slider-wrapper {
+    position: relative;
+    width: funcs.calculate-percent(480, 940);
+  }
+  &__slider-dots {
+    display: flex;
+    justify-content: center;
+  }
+
+  .slider {
+    width: 100%;
+    &__nav {
+      position: absolute;
+      top: calc(50% - 20px);
+      left: 50%;
+      z-index: 3;
+      transform: translate(-50%, -50%);
+      display: none;
+      padding: 20px;
+      border: 1px solid #5074AD;
+      border-radius: 5px;
+      box-shadow: inset 0 1px 0 #CCDFF1;
+      &::before {
+        @extend %pseudo-element;
+        inset: 0;
+        background: linear-gradient(to top, rgba(#fff, .3) 0%, #fff 100%);
+        opacity: .3;
+      }
+      &.active {
+        display: flex;
+      }
+
+      button {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-bottom: 1px solid #ACCBE4;
+        border-radius: 3px;
+        font-family: "FontAwesome", sans-serif;
+        background: linear-gradient(to top, #2A3137 0%, #50575C 100%);
+        box-shadow: inset 0 2px 3px 0 rgba(#000, 0.9);
+        color: #fff;
+        cursor: pointer;
+        &::before {
+          position: absolute;
+        }
+        &.slider__prev::before {
+          content: "\f04a";
+        }
+        &:hover {
+          background: linear-gradient(to bottom, #2A3137 0%, #50575C 100%);
+        }
+        &:active {
+          background: #2A3137;
+        }
+        &.slider__toggle {
+          margin: 0 40px;
+          &[data-status="paused"]::before {
+            content: "\f04b";
+          }
+          &[data-status="active"]::before {
+            content: "\f04c";
+          }
+        }
+        &.slider__next::before {
+          content: "\f04e";
+        }
+      }
+    }
+    &__screen-wrapper {
+      margin-bottom: 20px;
+      padding: 15px 0;
+      border-radius: 5px;
+      border-bottom: 1px solid #BFC3C9;
+      background: #2A2A2A;
+    }
+    &__screen {
+      height: 310px;
+      background: radial-gradient(circle, rgba(104, 167, 216, 1) 0%, rgba(59, 78, 139, 1) 100%);
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.about-offers {
+  padding: 40px 0;
+  border-color: #3A4048;
+  background: #16171A;
+  &__content {
+    flex-direction: column;
+  }
+  &__info-header {
+    border-radius: 5px;
+    background: linear-gradient(to top, #BAC0C8 0%, #CED2D8 100%);
+    margin-bottom: 40px;
+    box-shadow: inset 0 1px 0 #DFE2E5;
+    overflow: hidden;
+  }
+  &__info-button {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+
+    // Состояния:
+    &:hover {
+      background: linear-gradient(to bottom, #BAC0C8 0%, #CED2D8 100%);
+    }
+    &:active {
+      background: #BAC0C8;
+    }
+    &.active {
+      background: linear-gradient(to top, #2A2D32 0%, #40444D 100%);
+      box-shadow: inset 0 1px 0 #575D6A;
+      .about-offers__info-button-subtitle {
+        text-shadow: 0 1px 0 rgba(#000, .9);
+      }
+    }
+  }
+  &__info-button-title {
+    font-family: map.get(vars.$fonts, "nevis", "Bold"), sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-shadow: 0 -1px 0 rgba(83, 117, 131, 0.25);
+    color: #fff;
+  }
+  &__info-button-subtitle {
+    font-family: map.get(vars.$fonts, "Myriad Pro", "Semibold Italic"), sans-serif;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    color: #6f7380;
+  }
+}
+
+.services {
+  padding: 30px;
+  background: #292E36;
+  border-color: #252629;
+  &__content {
+    justify-content: space-between;
+  }
+}
+
+.subscription {
+  padding: 25px 0;
+  background: #141517;
+  border-color: #232429;
+}

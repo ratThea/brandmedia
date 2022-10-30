@@ -1,0 +1,104 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../base/variables" as vars;
+@use "../base/mixins" as mix;
+@use "../base/functions" as funcs;
+@use "../base/extentsions";
+
+// html/layout/footer.pug
+.main-footer {
+  padding: 25px 0;
+  background: #17181B;
+  &__content {
+    justify-content: space-between;
+  }
+  &__navigations {
+    display: flex;
+  }
+  &__nav {
+    position: relative;
+    padding: 0 20px;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:not(:last-child) {
+      &::after {
+        @extend %pseudo-element;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background: #2E2E33;
+      }
+    }
+  }
+  &__nav-header {
+    margin-bottom: 20px;
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Medium"), sans-serif;
+    font-size: 14px;
+    color: #fff;
+  }
+  &__nav-list {
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Roman"), sans-serif;
+    font-size: 12px;
+    color: #9ea3b0;
+  }
+  &__nav-list-item {
+    margin-bottom: 10px;
+    line-height: .8;
+  }
+  &__copyright {
+    @include mix.width-percent-by-container(455);
+    display: flex;
+  }
+  &__copyright-image {
+    align-self: center;
+    width: 145px;
+    height: 92px;
+    margin-right: 20px;
+    background: url(../images/common/footer.png);
+    background-size: 100% 100%;
+  }
+  &__copyright-description {
+    width: funcs.calculate-percent(310, 455);
+  }
+  &__copyright-header {
+    display: inline-flex;
+    margin-bottom: 20px;
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Medium"), sans-serif;
+    font-size: 14px;
+    color: #fff;
+
+    sup {
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+  }
+
+  &__copyright-text {
+    margin-bottom: 30px;
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Roman"), sans-serif;
+    font-size: 12px;
+    color: #9ea3b0;
+  }
+  &__copyright-menu {
+    display: flex;
+    font-size: 12px;
+    color: #fff;
+  }
+  &__copyright-menu-item {
+    padding: 0 5px;
+    border-right: 1px solid #fff;
+    line-height: .8;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,92 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+// Общие стили:
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 135px;
+  padding: 10px 20px;
+  font-family: map.get(vars.$fonts, "Helvetica", "LTStd Medium"), sans-serif;
+  font-size: 14px;
+  line-height: .7;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 map.get(vars.$buttons, "default", "text", "text-shadow-color");
+  color: map.get(vars.$buttons, "default", "text", "color");
+  background: linear-gradient(to top, map.get(vars.$buttons, "default", "background", "from") 0%, map.get(vars.$buttons, "default", "background", "to") 100%);
+  cursor: pointer;
+  &__content {
+    &::after {
+      display: none;
+      content: map.get(vars.$buttons, "default", "icon-code");
+      margin-left: 10px;
+      font-family: "FontAwesome", sans-serif;
+      line-height: .7;
+    }
+  }
+
+  &:hover {
+    background: linear-gradient(to bottom, map.get(vars.$buttons, "default", "background", "from") 0%, map.get(vars.$buttons, "default", "background", "to") 100%);
+    text-decoration: none;
+  }
+  &:active {
+    background: map.get(vars.$buttons, "default", "background", "from");
+  }
+
+  // Стилизация всех кнопок, которые отличаются от "по умолчанию":
+  @each $name, $data in vars.$buttons {
+
+    @if($name != "default") {
+      &_#{ $name } {
+
+        // Минимальная ширина:
+        @if(map.has-key($data, "min-width")) {
+          min-width: map.get($data, "min-width");
+        }
+
+        // Иконка ("FontAwesome"/отсутсвует) и ее отступ до текста:
+        .button__content::after {
+          display: inline-block;
+          @if(map.has-key($data, "icon-code")) {
+            content: map.get($data, "icon-code");
+            @if(map.has-key($data, "icon-margin")) {
+              margin-left: map.get($data, "icon-margin");
+            }
+          }
+        }
+
+        // Стилизация текста (цвет, тень):
+        @if(map.has-key($data, "text")) {
+          color: map.get($data, "text", "color");
+          text-shadow: 0 1px 0 map.get($data, "text", "text-shadow-color");
+        }
+
+        // Стили границ:
+        @if(map.has-key($data, "box-shadows")) {
+          box-shadow: 0 1px 2px rgba(#000, .3), inset 0 1px 0 map.get($data, "box-shadows", "top"), -1px 0 0 map.get($data, "box-shadows", "left");
+        } @else {
+          box-shadow: 0 1px 2px rgba(#000, .3), inset 0 1px 0 map.get(vars.$buttons, "default", "box-shadows", "top"), -1px 0 0 map.get(vars.$buttons, "default", "box-shadows", "left");
+        }
+
+        // Заливка и состояние:
+        @if(map.has-key($data, "background")) {
+          background: linear-gradient(to top, map.get($data, "background", "from") 0%, map.get($data, "background", "to") 100%);
+          &:hover {
+            background: linear-gradient(to bottom, map.get($data, "background", "from") 0%, map.get($data, "background", "to") 100%);
+          }
+          &:active {
+            background: map.get($data, "background", "from");
+          }
+        }
+      }
+    }
+  }
+}

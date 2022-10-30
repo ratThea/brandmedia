@@ -1,0 +1,17 @@
+include html/base/variables/_global
+include html/base/_functions
+include html/base/_mixins
+include html/base/variables/pages/_contact
+
+doctype html
+html(lang=lang)
+    include html/layout/head
+    body(data-map)
+        include html/layout/header
+
+        .main-content
+            include html/pages/contact
+
+        include html/layout/footer
+        script(src="https://api-maps.yandex.ru/2.1/?apikey=8979fd01-5a7f-4386-916b-89daf4833421&lang=ru_RU")
+        script(src= path.scripts)

@@ -1,0 +1,59 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  border-radius: 5px;
+  box-shadow: 0 -1px 0 #54585C, 0 1px 2px rgba(#000, .3), 1px 0 0 #242425, -1px 0 0 #3E4145;
+  overflow: hidden;
+  &__header {
+    padding: 12px 25px;
+    font-family: map.get(vars.$fonts, "nevis", "Bold"), sans-serif;
+    text-transform: uppercase;
+    background: linear-gradient(to top, #2A2D31 0%, #3A3D40 100%);
+    color: #fff;
+  }
+  &__list {
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Medium"), sans-serif;
+    color: #d4d4d4;
+  }
+  &__list-item {
+    padding: 15px 25px;
+    // Не любилю такие вещи, но так было в дизайне =\
+    &:nth-child(1) {
+      border-top: 1px solid #505357;
+      background: linear-gradient(to top, #3D4044 0%, #484B4F 100%);
+    }
+    &:nth-child(2) {
+      border-bottom: 1px solid #383B3F;
+      background: linear-gradient(to top, #494C4F 0%, #54575B 100%);
+    }
+    &:nth-child(3) {
+      border-top: 1px solid #494C50;
+      background: linear-gradient(to top, #34373A 0%, #404347 100%);
+    }
+    &:nth-child(4) {
+      border-bottom: 1px solid #303337;
+      background: linear-gradient(to top, #414447 0%, #4C4F53 100%);
+    }
+  }
+  &__data-name {
+    margin-right: 15px;
+    color: #fff;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0;
+    background: #34373B;
+  }
+}

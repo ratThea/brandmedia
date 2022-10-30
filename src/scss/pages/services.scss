@@ -1,0 +1,33 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../base/variables" as vars;
+@use "../base/mixins" as mix;
+@use "../base/functions" as funcs;
+@use "../base/extentsions";
+
+@use "../components/services/service-example";
+@use "../components/services/service-presentation-item";
+
+// html/pages/services.pug
+.main-services {
+  padding-bottom: 35px;
+  @extend %no-border;
+  &__content {
+    flex-direction: column;
+  }
+  &__examples {
+    display: flex;
+    flex-direction: column;
+  }
+  &__presentation {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .page-title {
+    margin-bottom: 35px;
+  }
+}

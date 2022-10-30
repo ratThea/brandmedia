@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/x-icon" href="images/common/favicon.ico" rel="shortcut icon">
+    <link type="Image/x-icon" href="images/common/favicon.ico" rel="icon">
+    <title>Brandmedia | Services</title>
+    <meta name="keywords" content="brandmedia, html, pug, scss, javascript">
+    <meta name="description" content="Brandmedia - тестовая верстка на pug, scss, js.">
+    <script src="https://kit.fontawesome.com/6409aaf1cb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.min.css">
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="main-header__content container">
+        <div class="main-header__logo"><a class="main-header__logo-link" href="index.html"><img src="images/common/logo.png" alt="BrandMedia" title="Brandmedia"></a><span class="main-header__slogan">We love beautiful things</span></div>
+        <nav class="main-header__menu" id="header-menu">
+          <ul class="main-header__menu-list">
+            <li class="main-header__menu-list-item home"><a class="main-header__menu-link" href="index.html"><img src="images/common/home.png" alt="home" title="home"></a>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="about.html">about us<span class="submenu-toggler" data-action="submenu"><i class="fa-solid fa-caret-left"></i></span></a>
+              <div class="submenu">
+                <ul class="submenu__list">
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">App Media</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Branding</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Case Study</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Devices</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Jobs</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Networks</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Tutorials</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="portfolio.html">portfolio</a>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="services.html">services</a>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="blog.html">blog<span class="submenu-toggler" data-action="submenu"><i class="fa-solid fa-caret-left"></i></span></a>
+              <div class="submenu">
+                <ul class="submenu__list">
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">App Media</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Branding</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Case Study</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Devices</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Jobs</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Networks</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Tutorials</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="contact.html">contact</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="main-header__toggle" id="main-menu-toggle" data-action="main"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </header>
+    <div class="main-content">
+      <section class="main-services">
+        <div class="container main-services__content">
+          <div class="page-title">
+            <div class="page-title__info">
+              <h3 class="page-title__header">Services</h3><span class="page-title__subtitle">This is subtitle</span>
+            </div>
+            <form class="default-form default-form_search">
+              <label class="default-form__label">
+                <input class="default-form__input" type="search" name="services-search" placeholder="Search"/>
+              </label>
+              <button class="default-form__submit" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          </div>
+          <div class="main-services__examples">
+            <div class="service-example">
+              <div class="service-example__content">
+                <div class="service-example__image"><img src="images/sections/services/web_design.png" alt="Web Design" title="Web Design" data-description="Описание картинки &quot;Web Design&quot;"/><span class="image-popup" id="image-popup" data-action="image-popup"></span></div>
+                <div class="service-example__description">
+                  <h5 class="service-example__description-header"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla.</a></h5>
+                  <p class="service-example__description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla. Maecenas gravida lacus non leo congue elementum. Praesent tincidunt lectus nec felis hendrerit id blandit ante consequat. Proin bibendum, arcu eu lobortis egestas, massa leo ullamcorper dolor, non ullamcorper neque magna quis diam. Praesent interdum neque id nulla accumsan euismod. Curabitur sit amet ornare purus. Aliquam erat volutpat.</p>
+                </div>
+              </div>
+              <div class="service-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_support" href="#" title="Get Support"><span class="button__content">Get Support</span></a><a class="button button_examples" href="#" title="Examples"><span class="button__content">Examples</span></a><a class="button button_touch" href="#" title="Get in touch"><span class="button__content">Get in touch</span></a>
+              </div>
+            </div>
+            <div class="service-example">
+              <div class="service-example__content">
+                <div class="service-example__image"><img src="images/sections/services/marketing.png" alt="Marketing" title="Marketing" data-description="Описание картинки &quot;Marketing&quot;"/><span class="image-popup" id="image-popup" data-action="image-popup"></span></div>
+                <div class="service-example__description">
+                  <h5 class="service-example__description-header"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla.</a></h5>
+                  <p class="service-example__description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla. Maecenas gravida lacus non leo congue elementum. Praesent tincidunt lectus nec felis hendrerit id blandit ante consequat. Proin bibendum, arcu eu lobortis egestas, massa leo ullamcorper dolor, non ullamcorper neque magna quis diam. Praesent interdum neque id nulla accumsan euismod. Curabitur sit amet ornare purus. Aliquam erat volutpat.</p>
+                </div>
+              </div>
+              <div class="service-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_support" href="#" title="Get Support"><span class="button__content">Get Support</span></a><a class="button button_examples" href="#" title="Examples"><span class="button__content">Examples</span></a><a class="button button_touch" href="#" title="Get in touch"><span class="button__content">Get in touch</span></a>
+              </div>
+            </div>
+            <div class="service-example">
+              <div class="service-example__content">
+                <div class="service-example__image"><img src="images/sections/services/brand_design.png" alt="Brand Design" title="Brand Design" data-description="Описание картинки &quot;Brand Design&quot;"/><span class="image-popup" id="image-popup" data-action="image-popup"></span></div>
+                <div class="service-example__description">
+                  <h5 class="service-example__description-header"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla.</a></h5>
+                  <p class="service-example__description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla. Maecenas gravida lacus non leo congue elementum. Praesent tincidunt lectus nec felis hendrerit id blandit ante consequat. Proin bibendum, arcu eu lobortis egestas, massa leo ullamcorper dolor, non ullamcorper neque magna quis diam. Praesent interdum neque id nulla accumsan euismod. Curabitur sit amet ornare purus. Aliquam erat volutpat.</p>
+                </div>
+              </div>
+              <div class="service-example__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_support" href="#" title="Get Support"><span class="button__content">Get Support</span></a><a class="button button_examples" href="#" title="Examples"><span class="button__content">Examples</span></a><a class="button button_touch" href="#" title="Get in touch"><span class="button__content">Get in touch</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="main-services__presentation">
+            <div class="service-presentation-item">
+              <h3 class="service-presentation-item__title"><a href="#">Get a gift with each service</a></h3><span class="service-presentation-item__subtitle">This is a Subtittle</span>
+              <p class="service-presentation-item__description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+            </div>
+            <div class="service-presentation-item">
+              <h3 class="service-presentation-item__title"><a href="#">See how we work</a></h3><span class="service-presentation-item__subtitle">This is a Subtittle</span>
+              <p class="service-presentation-item__description">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.</p>
+            </div>
+            <div class="service-presentation-item">
+              <h3 class="service-presentation-item__title"><a href="#">App Services</a></h3><span class="service-presentation-item__subtitle">This is a Subtittle</span>
+              <p class="service-presentation-item__description">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p>
+            </div>
+            <div class="service-presentation-item">
+              <h3 class="service-presentation-item__title"><a href="#">Special Services</a></h3><span class="service-presentation-item__subtitle">This is a Subtittle</span>
+              <p class="service-presentation-item__description">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="subscription">
+        <div class="container subscription__content">
+          <form class="subscribe-form"><a class="subscribe-form__link" href="#" title="mail"></a>
+            <div class="subscribe-form__body">
+              <h3 class="subscribe-form__title">join now to our newsletter</h3>
+              <label class="default-form__label" for="subscribe">Get the latest news of BrandMedia</label>
+              <input class="default-form__input" id="subscribe" type="email" name="user-email" required="required" placeholder="Your email address"/>
+              <button class="button button_form" title="Sign Up" type="submit">Sign up</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <footer class="main-footer">
+      <div class="main-footer__content container">
+        <div class="main-footer__navigations">
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Site Navigation</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="index.html">Home</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="about.html">About</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="portfolio.html">Portfolio</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="services.html">Services</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="blog.html">Blog</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Blog Categories</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">App Media</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Branding</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Case Studio</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Devices</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Jobs</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Networks</a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Jobs Board</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Animation</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Brand Identy</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Development</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Graphic Design</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Marketing</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Web Design</a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Connect</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Twitter</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Facebook</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Youtube</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Flickr</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Vimeo</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Tumblr</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="main-footer__copyright">
+          <div class="main-footer__copyright-image"></div>
+          <div class="main-footer__copyright-description">
+            <h6 class="main-footer__copyright-header">BrandMedia<sup>tm</sup></h6>
+            <p class="main-footer__copyright-text">Copyright © 2010-2011 BrandMedia. All rights reserved. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit turpis, semper sed consequat a, malesuada vel neque.</p>
+            <ul class="main-footer__copyright-menu">
+              <li class="main-footer__copyright-menu-item"><a class="main-footer__copyright-menu-link" href="#">Terms & Conditions</a>
+              </li>
+              <li class="main-footer__copyright-menu-item"><a class="main-footer__copyright-menu-link" href="#">Privacy</a>
+              </li>
+              <li class="main-footer__copyright-menu-item"><a class="main-footer__copyright-menu-link" href="#">Contact us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.min.js"></script>
+  </body>
+</html>

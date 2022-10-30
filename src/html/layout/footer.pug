@@ -1,0 +1,15 @@
+footer.main-footer
+    .main-footer__content.container
+        .main-footer__navigations
+            each menu in footerNavigations
+                +footer_navigation(menu)
+        .main-footer__copyright
+            .main-footer__copyright-image
+            .main-footer__copyright-description
+                h6.main-footer__copyright-header BrandMedia
+                    sup tm
+                p.main-footer__copyright-text Copyright © 2010-2011 BrandMedia. All rights reserved. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit turpis, semper sed consequat a, malesuada vel neque.
+                ul.main-footer__copyright-menu
+                    +create_nav_item("main-footer__copyright-menu-item", "main-footer__copyright-menu-link", "Terms & Conditions")
+                    +create_nav_item("main-footer__copyright-menu-item", "main-footer__copyright-menu-link", "Privacy")
+                    +create_nav_item("main-footer__copyright-menu-item", "main-footer__copyright-menu-link", "Contact us")

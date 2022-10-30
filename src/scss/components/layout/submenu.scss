@@ -1,0 +1,54 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+.submenu {
+  position: absolute;
+  display: inline-flex;
+  min-width: 150px;
+  font-family: map.get(vars.$fonts, "Helvetica", "LTStd Medium"), sans-serif;
+  font-size: 12px;
+  &::before {
+    position: absolute;
+    top: -12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    content: "\f0d8";
+    font-family: "FontAwesome", sans-serif;
+    font-size: 20px;
+    color: #36383C;
+    text-shadow: 0 -1px 0 #56595F;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 10px;
+    border-top: 1px solid #56595F;
+    border-radius: 5px;
+    background: #36383C;
+    overflow: hidden;
+  }
+  &__list-item {
+    &:nth-child(even) .submenu__link {
+      background: #36383C;
+    }
+    color: #fff;
+    &:hover a {
+      color: #a6bccc;
+    }
+  }
+  &__link {
+    display: flex;
+    padding: 7px 15px 9px 15px;
+    background: #4E5054;
+  }
+}

@@ -1,0 +1,33 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+.image-popup {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 20px;
+  font-family: "FontAwesome", sans-serif;
+  font-size: 12px;
+  border-radius: 35%;
+  background: linear-gradient(to top, #0D0F13 0%, #090B0D 100%);
+  box-shadow: 0 1px 0 #28313C, inset 0 1px 3px 0 rgba(#000, .5);
+  color: #fff;
+  cursor: pointer;
+  &::before {
+    content: "\f002";
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}

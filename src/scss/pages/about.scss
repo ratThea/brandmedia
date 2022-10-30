@@ -1,0 +1,60 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../base/variables" as vars;
+@use "../base/mixins" as mix;
+@use "../base/functions" as funcs;
+@use "../base/extentsions";
+
+@use "../components/about/team-item";
+
+// html/pages/about.pug
+.about {
+  @extend %no-border;
+  &__content {
+    flex-direction: column;
+  }
+
+  .page-title {
+    margin-bottom: 30px;
+  }
+
+  .about-article {
+    padding-bottom: 45px;
+  }
+}
+
+.team {
+  border-color: #5D6673;
+  padding-bottom: 45px;
+  &__content {
+    flex-direction: column;
+  }
+  &__slogan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin-bottom: 45px;
+    padding: 20px;
+    border-top: 1px solid #63666C;
+    font-family: map.get(vars.$fonts, "Officina", "ExtraBold Italic"), sans-serif;
+    font-size: 30px;
+    border-radius: 5px;
+    background: linear-gradient(to top, #35373A 0%, #494C51 100%);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .3);
+    color: #fff;
+    text-shadow: 0 -2px 0 rgba(0, 0, 0, .25);
+  }
+  &__description-items {
+    display: flex;
+    justify-content: space-between;
+
+    .team-item {
+      width: 32%;
+    }
+  }
+}
+

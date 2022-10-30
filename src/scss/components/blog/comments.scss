@@ -1,0 +1,38 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+.comments {
+  display: flex;
+  font-family: map.get(vars.$fonts, "Helvetica", "LTStd Roman"), sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #fff;
+  &__list-item {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #393E45;
+    &:not(:first-child) {
+      padding-top: 15px;
+      border-top: 1px solid #53585F;
+    }
+  }
+  &__author {
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Medium"), sans-serif;
+  }
+  &__content {
+    margin-bottom: 15px;
+  }
+  &__post-info {
+    color: #fff;
+  }
+  &__post-date,
+  &__topic-name {
+    color: #c1e0f0;
+  }
+}

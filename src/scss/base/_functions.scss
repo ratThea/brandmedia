@@ -1,0 +1,36 @@
+@use "sass:math";
+
+// Функции:
+
+/// Вычисляет процент одного числа от другого.
+///
+/// @param {number} $target
+///   Число, которое надо перевести в процент.
+/// @param {number} $parent
+///   Число, от которого надо высчитать процент.
+/// @return {number} Процент, который `$target` составляет от `$parent`.
+@function calculate-percent($target, $parent) {
+    
+    @if($parent == 0) {
+        @error "Деление на ноль";
+    }
+
+    @return math.div($target, $parent) * 100%;
+}
+
+/// Добавляет к числу знак единицы измерения.
+///
+/// @param {number} $number
+///     Число, к которое надо превратить в процент.
+/// @param {string} $units единицы измерения или строка с "%"
+///     Единицы измерения, в котороых должны быть указано число: px, em, rem, "%"
+/// @return Число с единицами измерения.
+@function set-units($number, $units: px) {
+
+    @if($units == "%") {
+        @return $number * 1%;
+    } @else {
+        @return #{ $number + $units };
+    }
+
+}

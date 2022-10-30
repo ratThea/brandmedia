@@ -1,0 +1,153 @@
+$default-font-size: 16px;
+
+$media: (
+  "default": ( "container-width": 1140 ),
+  "lg":  ( "breakpoint": 1200px, "container-width":  960 ),
+  "md":  ( "breakpoint": 990px, "container-width":  720 ),
+  "sm":  ( "breakpoint": 770px, "container-width": 540 ),
+  "xs":  ( "breakpoint": 570px, "container-width": 95 )
+);
+
+$fonts: (
+  "Helvetica": (
+    "Bold": "HelveticaNeueBold",
+    "LTStd Bold": "HelveticaNeueLTStdBd",
+    "LTStd Medium": "HelveticaNeueLTStdMd",
+    "LTStd Roman": "HelveticaNeueLTStdRoman"
+  ),
+  "Myriad Pro": (
+    "Regular": "MyriadProRegular",
+    "Black Italic": "MyriadProBlackIt",
+    "Black SemiCn Italic": "MyriadProBlackSemiCnIt",
+    "Semibold Italic": "MyriadProSemiboldItalic"
+  ),
+  "nevis": ( "Bold": "NevisBold" ),
+  "Officina": ( "ExtraBold Italic": "OfficinaSerITCStdBlackItalic" )
+);
+
+$buttons: (
+  "default": (
+    "background": ( "from": #474F5D, "to": #606A7D ),
+    "box-shadows": ( "top": #8290A8, "left": #434957),
+    "text": (
+      "color": #fff,
+      "text-shadow-color": rgba(#000, .2),
+    ),
+  ),
+  "rss": (
+    "min-width": unset,
+    "background": ( "from": #F27C23, "to": #F6A02E ),
+    "box-shadows": ( "top": #FACD44, "left": #FACC42 ),
+  ),
+  "plus": (
+    "icon-code": "\2b"
+  ),
+  "twitter": (
+    "background": ( "from": #317293, "to": #429BB7 ),
+    "box-shadows": ( "top": #59BDD0, "left": #59BDD0),
+    "icon-code": "\f099"
+  ),
+  "facebook": (
+    "background": ( "from": #335080, "to": #456CAA ),
+    "box-shadows": ( "top": #5C91C7, "left": #355178),
+    "icon-code": "\f39e"
+  ),
+  "touch": (
+    "min-width": 145px,
+    "icon-code": "\f0e0"
+  ),
+  "read-more": (
+    "min-width": 100px,
+    "background": ( "from": #779CC0, "to": #9CBAD9 ),
+    "box-shadows": ( "top": #BED2E6, "left": #7F9EBC),
+  ),
+  "portfolio": (
+    "min-width": 100px,
+    "background": ( "from": #DFE3EC, "to": #EDF1F5 ),
+    "box-shadows": ( "top": #FFF, "left": #B9C1D0),
+    "text": (
+      "color": #92a2b1,
+      "text-shadow-color": rgba(#fff, .58),
+    )
+  ),
+  "tour": (
+    "icon-code": "\e098"
+  ),
+  "store": (
+    "icon-code": "\f07a"
+  ),
+  "jobs": (
+    "icon-code": "\f7b6"
+  ),
+  "share": (
+    "icon-code": "\f004",
+    "background": ( "from": #4F596B, "to": #69768D),
+  ),
+  "form": (
+    "min-width": 75px,
+    "background": ( "from": #C73533, "to": #BF5C43),
+    "box-shadows": ( "top": #DD8A64, "left": transparent),
+  ),
+  "reply": (
+    "min-width": 75px,
+    "background": ( "from": #3F6B8A, "to": #4A7E9F),
+    "box-shadows": ( "top": #64A6C2, "left": transparent),
+  ),
+  "study": (
+    "background": ( "from": #686F7C, "to": #8C97A7),
+    "box-shadows": ( "top": #B4BAC6, "left": transparent),
+    "icon-code": "\f06e"
+  ),
+  "testimonials": (
+    "background": ( "from": #225882, "to": #2E76AA),
+    "box-shadows": ( "top": #3EA1C9, "left": transparent),
+    "icon-code": "\f086"
+  ),
+  "support": (
+    "min-width": 145px,
+    "background": ( "from": #617D8D, "to": #83A8B3),
+    "box-shadows": ( "top": #ADC6CD, "left": transparent),
+    "icon-code": "\f021"
+    ),
+    "examples": (
+      "min-width": 145px,
+      "background": ( "from": #8D3B28, "to": #B24E36),
+      "box-shadows": ( "top": #CC6848, "left": transparent),
+      "icon-code": "\f07c",
+      "icon-margin": 25px
+    )
+);
+
+
+$service-info: (
+  "base-width": 265,
+  "types": (
+    "tour": (
+        "background": ( "from": #7E91A6, "to": #556270 ),
+        "border-color": #8295A5,
+        "after": (
+          "width": 20px,
+          "height": 25px,
+          "background-position": ( "x": -229px, "y": -19px)
+        )
+    ),
+    "store": (
+      "background": ( "from": #3AC6E0, "to": #2897C6 ),
+      "border-color": #4CD7E9,
+        "after": (
+          "width": 16px,
+          "height": 28px,
+          "background-position": ( "x": -252px, "y": -16px)
+        )
+    ),
+    "jobs": (
+      "background": ( "from": #DBE8EC, "to": #BED6DC ),
+      "border-color": #E1ECEF,
+      "after": (
+        "width": 26px,
+        "height": 22px,
+        "background-position": ( "x": -272px, "y": -22px)
+      )
+    ),
+  )
+);

@@ -1,0 +1,86 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+.team-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-right: 30px;
+  color: #67747f;
+  &:last-child {
+    padding: 0;
+    margin: 0;
+    &::after {
+      display: none;
+    }
+  }
+  &::after {
+    @extend %pseudo-element;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background: url(../images/sections/about/team-item-border.png) repeat-y;
+  }
+  &__header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    padding-right: 35px;
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Bold"), sans-serif;
+    font-size: 18px;
+    color: #fff;
+    &::after {
+      @extend %sprite-images;
+      @extend %pseudo-element;
+      top: 0;
+      right: 0;
+    }
+  }
+  &__text {
+    margin-bottom: 40px;
+    font-size: 12px;
+    word-break: break-word;
+  }
+
+  // Модификаторы:
+  &_people {
+
+    .team-item__header::after {
+      width: 24px;
+      height: 26px;
+      background-position: -135px -17px;
+    }
+  }
+
+  &_professionals {
+
+    .team-item__header::after {
+      width: 32px;
+      height: 26px;
+      background-position: -163px -17px;
+    }
+  }
+
+  &_quality {
+
+    .team-item__header::after {
+      width: 24px;
+      height: 26px;
+      background-position: -201px -19px
+    }
+  }
+
+  .button {
+    margin-top: auto;
+    align-self: start;
+  }
+}

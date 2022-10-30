@@ -1,0 +1,13 @@
+section.main-services
+    .container.main-services__content
+        +page_title(title, "This is subtitle", "services-search")
+        .main-services__examples
+            each item in serviceExamples
+                +service_example_content(item)
+        .main-services__presentation
+            each item in servicePresentationItems
+                +service_presentation_item(item)
+
+section.subscription
+    .container.subscription__content
+        +subscribe_form

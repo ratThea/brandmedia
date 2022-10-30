@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/x-icon" href="images/common/favicon.ico" rel="shortcut icon">
+    <link type="Image/x-icon" href="images/common/favicon.ico" rel="icon">
+    <title>Brandmedia | Blog</title>
+    <meta name="keywords" content="brandmedia, html, pug, scss, javascript">
+    <meta name="description" content="Brandmedia - тестовая верстка на pug, scss, js.">
+    <script src="https://kit.fontawesome.com/6409aaf1cb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.min.css">
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="main-header__content container">
+        <div class="main-header__logo"><a class="main-header__logo-link" href="index.html"><img src="images/common/logo.png" alt="BrandMedia" title="Brandmedia"></a><span class="main-header__slogan">We love beautiful things</span></div>
+        <nav class="main-header__menu" id="header-menu">
+          <ul class="main-header__menu-list">
+            <li class="main-header__menu-list-item home"><a class="main-header__menu-link" href="index.html"><img src="images/common/home.png" alt="home" title="home"></a>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="about.html">about us<span class="submenu-toggler" data-action="submenu"><i class="fa-solid fa-caret-left"></i></span></a>
+              <div class="submenu">
+                <ul class="submenu__list">
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">App Media</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Branding</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Case Study</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Devices</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Jobs</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Networks</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Tutorials</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="portfolio.html">portfolio</a>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="services.html">services</a>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="blog.html">blog<span class="submenu-toggler" data-action="submenu"><i class="fa-solid fa-caret-left"></i></span></a>
+              <div class="submenu">
+                <ul class="submenu__list">
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">App Media</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Branding</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Case Study</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Devices</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Jobs</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Networks</a>
+                  </li>
+                  <li class="submenu__list-item"><a class="submenu__link" href="#">Tutorials</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="main-header__menu-list-item"><a class="main-header__menu-link" href="contact.html">contact</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="main-header__toggle" id="main-menu-toggle" data-action="main"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </header>
+    <div class="main-content">
+      <section class="blog">
+        <div class="container blog__content">
+          <div class="page-title">
+            <div class="page-title__info">
+              <h3 class="page-title__header">Blog</h3><span class="page-title__subtitle">This is subtitle</span>
+            </div>
+            <form class="default-form default-form_search">
+              <label class="default-form__label">
+                <input class="default-form__input" type="search" name="blog-search" placeholder="Search"/>
+              </label>
+              <button class="default-form__submit" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          </div>
+          <div class="blog__page-content">
+            <div class="blog__posts-wrapper">
+              <div class="blog-posts">
+                <div class="blog-post">
+                  <div class="blog-post__header">
+                    <div class="blog-post__header-content">
+                      <h4 class="blog-post__title"><a href="#">How to make a good site with BrandMedia</a></h4>
+                      <div class="blog-post__info">Posted by <a href="#" class="blog-post__author">Nuko</a> on <time class="blog-post__date"><a href="#">18 June 2010</a></time>Categories <span class="blog-post__categories"><a href="#">Tutorials</a>, <a href="#">Networks</a></span></div>
+                    </div><a class="blog-post__comments" href="#"><i class="fa-solid fa-message"></i> <span class="blog-post__comments-count">175</span></a>
+                  </div>
+                  <div class="blog-post__image-wrapper">
+                    <div class="blog-post__image-preview"></div>
+                  </div>
+                  <div class="blog-post__content">
+                    <p class="blog-post__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" class="blog-post__text-link">Donec</a> nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla. Maecenas gravida lacus non leo congue elementum. Praesent tincidunt lectus nec felis hendrerit id blandit ante consequat. Proin bibendum, arcu eu lobortis egestas, massa leo ullamcorper dolor, non ullamcorper neque magna quis diam. <a href="#" class="blog-post__text-link">Praesent</a> interdum neque id nulla accumsan euismod. Curabitur sit amet ornare purus. Aliquam erat volutpat.</p>
+                    <p class="blog-post__text">`Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`</p>
+                  </div>
+                  <div class="blog-post__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_share" href="#" title="Share This"><span class="button__content">Share This</span></a>
+                  </div>
+                </div>
+                <div class="blog-post">
+                  <div class="blog-post__header">
+                    <div class="blog-post__header-content">
+                      <h4 class="blog-post__title"><a href="#">How to make a good site with BrandMedia</a></h4>
+                      <div class="blog-post__info">Posted by <a href="#" class="blog-post__author">Nuko</a> on <time class="blog-post__date"><a href="#">18 June 2010</a></time>Categories <span class="blog-post__categories"><a href="#">Tutorials</a>, <a href="#">Networks</a></span></div>
+                    </div><a class="blog-post__comments" href="#"><i class="fa-solid fa-message"></i> <span class="blog-post__comments-count">175</span></a>
+                  </div>
+                  <div class="blog-post__image-wrapper">
+                    <div class="blog-post__image-preview"></div>
+                  </div>
+                  <div class="blog-post__content">
+                    <p class="blog-post__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" class="blog-post__text-link">Donec</a> nisl felis, lobortis ac vulputate et, cursus eget tellus. Donec in ipsum nec tellus malesuada sodales non ac sem. Aliquam erat volutpat. Proin in velit nec tellus egestas auctor et eget nulla. Maecenas gravida lacus non leo congue elementum. Praesent tincidunt lectus nec felis hendrerit id blandit ante consequat. Proin bibendum, arcu eu lobortis egestas, massa leo ullamcorper dolor, non ullamcorper neque magna quis diam. <a href="#" class="blog-post__text-link">Praesent</a> interdum neque id nulla accumsan euismod. Curabitur sit amet ornare purus. Aliquam erat volutpat.</p>
+                    <p class="blog-post__text">`Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`</p>
+                  </div>
+                  <div class="blog-post__buttons"><a class="button button_plus" href="#" title="Read More"><span class="button__content">Read More</span></a><a class="button button_share" href="#" title="Share This"><span class="button__content">Share This</span></a>
+                  </div>
+                </div>
+              </div>
+              <div class="blog__posts-pagination"><a class="blog__posts-prev" href="#">Previous Page</a><a class="blog__posts-prev" href="#">Next Page</a></div>
+            </div>
+            <div class="main-aside">
+              <div class="subscription-rss">
+                <div class="subscription-rss__header">
+                  <div class="subscription-rss__title"><span class="subscription-rss__title-text">Subscribe via RSS</span><span class="subscription-rss__title-icon"></span></div>
+                </div>
+                <form class="subscription-rss__form default-form default-form_rss" action="#">
+                  <label class="subscription-rss__label" for="rss-input"></label>
+                  <input class="subscription-rss__input default-form__input" id="rss-input" name="rss-input" type="email" placeholder="Your email address" required>
+                  <button class="default-form__submit button button_rss" type="submit"><i class="fa-solid fa-plus"></i></button>
+                </form>
+                <div class="subscription-rss__data">
+                  <div class="subscription-rss__rss-data"><span class="subscription-rss__count">123456</span> Readers</div>
+                  <div class="subscription-rss__twitter-data"><span class="subscription-rss__count">12568</span> Followers</div>
+                </div>
+              </div>
+              <div class="aside-nav aside-nav_red">
+                <h6 class="aside-nav__header">categories</h6>
+                <div class="aside-nav__body">
+                  <ul class="aside-nav__list">
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">App Media</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">Branding</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">Case Study</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">Digital Art</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">E-mail</a>
+                    </li>
+                  </ul>
+                  <ul class="aside-nav__list">
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">Featured Articles</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">Graphic Design</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">Jobs</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">Multimedia</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">Networks</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="aside-nav">
+                <h6 class="aside-nav__header">archives</h6>
+                <div class="aside-nav__body">
+                  <ul class="aside-nav__list">
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">January 2010</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">February 2010</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">March 2010</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">April 2010</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">May 2010</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">June 2010</a>
+                    </li>
+                  </ul>
+                  <ul class="aside-nav__list">
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">July 2010</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">August 2010</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">September 2010</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">October 2010</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">November 2010</a>
+                    </li>
+                    <li class="aside-nav__list-item"><a class="aside-nav__list-link" href="#">December 2010</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="recent-activity" id="recent-activity">
+                <div class="recent-activity__header"><span class="recent-activity__button">Recent Comments</span><span class="recent-activity__button">Popular Posts</span></div>
+                <div class="recent-activity__body">
+                  <div class="recent-activity__content">
+                    <div class="comments">
+                      <ul class="comments__list">
+                        <li class="comments__list-item">
+                          <p class="comments__content"><span class="comments__author">Nuko says:</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p><span class="comments__data"><span class="comments__post-info"><a class="comments__post-date" href="#">January 2010</a> in <a class="comments__topic-name" href="#">How to make a good site</a></span></span>
+                        </li>
+                        <li class="comments__list-item">
+                          <p class="comments__content"><span class="comments__author">Nuko says:</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p><span class="comments__data"><span class="comments__post-info"><a class="comments__post-date" href="#">January 2010</a> in <a class="comments__topic-name" href="#">How to make a good site</a></span></span>
+                        </li>
+                        <li class="comments__list-item">
+                          <p class="comments__content"><span class="comments__author">Nuko says:</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p><span class="comments__data"><span class="comments__post-info"><a class="comments__post-date" href="#">January 2010</a> in <a class="comments__topic-name" href="#">How to make a good site</a></span></span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="recent-activity__content">Popular posts (для них дизайна нет)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="subscription">
+        <div class="container subscription__content">
+          <form class="subscribe-form"><a class="subscribe-form__link" href="#" title="mail"></a>
+            <div class="subscribe-form__body">
+              <h3 class="subscribe-form__title">join now to our newsletter</h3>
+              <label class="default-form__label" for="subscribe">Get the latest news of BrandMedia</label>
+              <input class="default-form__input" id="subscribe" type="email" name="user-email" required="required" placeholder="Your email address"/>
+              <button class="button button_form" title="Sign Up" type="submit">Sign up</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <footer class="main-footer">
+      <div class="main-footer__content container">
+        <div class="main-footer__navigations">
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Site Navigation</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="index.html">Home</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="about.html">About</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="portfolio.html">Portfolio</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="services.html">Services</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="blog.html">Blog</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Blog Categories</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">App Media</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Branding</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Case Studio</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Devices</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Jobs</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Networks</a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Jobs Board</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Animation</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Brand Identy</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Development</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Graphic Design</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Marketing</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Web Design</a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer__nav">
+            <h6 class="main-footer__nav-header">Connect</h6>
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Twitter</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Facebook</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Youtube</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Flickr</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Vimeo</a>
+              </li>
+              <li class="main-footer__nav-list-item"><a class="main-footer__nav-link" href="#">Tumblr</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="main-footer__copyright">
+          <div class="main-footer__copyright-image"></div>
+          <div class="main-footer__copyright-description">
+            <h6 class="main-footer__copyright-header">BrandMedia<sup>tm</sup></h6>
+            <p class="main-footer__copyright-text">Copyright © 2010-2011 BrandMedia. All rights reserved. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit turpis, semper sed consequat a, malesuada vel neque.</p>
+            <ul class="main-footer__copyright-menu">
+              <li class="main-footer__copyright-menu-item"><a class="main-footer__copyright-menu-link" href="#">Terms & Conditions</a>
+              </li>
+              <li class="main-footer__copyright-menu-item"><a class="main-footer__copyright-menu-link" href="#">Privacy</a>
+              </li>
+              <li class="main-footer__copyright-menu-item"><a class="main-footer__copyright-menu-link" href="#">Contact us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.min.js"></script>
+  </body>
+</html>

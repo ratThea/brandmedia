@@ -1,0 +1,29 @@
+@use "sass:map";
+@use "variables" as vars;
+@use "mixins" as mix;
+
+// Базовая настройка макета, ширины контейнера и адаптивности:
+body {
+  min-height: 100%;
+  font-family: map.get(vars.$fonts, "Helvetica", "LTStd Roman"), sans-serif;
+  font-size: vars.$default-font-size;
+  background: #16171A;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+  overflow-x: hidden;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  padding: 0 10px;
+  width: #{ map.get(vars.$media, "default", "container-width") }px;
+}
+
+@include mix.base-media(vars.$media);
+

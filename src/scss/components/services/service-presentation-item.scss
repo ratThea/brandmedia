@@ -1,0 +1,27 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+.service-presentation-item {
+  width: 21.76%;
+  font-family: "Arial", sans-serif;
+  font-size: 12px;
+  color: #67747f;
+  &__title {
+    margin-bottom: 10px;
+    font-family: map.get(vars.$fonts, "Helvetica", "Bold"), sans-serif;
+    font-size: 14px;
+    color: #fff;
+  }
+  &__subtitle {
+    display: block;
+    margin-bottom: 30px;
+    font-style: italic;
+  }
+}

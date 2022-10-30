@@ -1,0 +1,15 @@
+include html/base/variables/_global
+include html/base/_functions
+include html/base/_mixins
+include html/base/variables/pages/_about
+
+doctype html
+html(lang=lang)
+    include html/layout/head
+    body
+        include html/layout/header
+        .main-content
+            include html/pages/about
+
+        include html/layout/footer
+        script(src= path.scripts)

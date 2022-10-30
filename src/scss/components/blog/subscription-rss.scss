@@ -1,0 +1,117 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+.subscription-rss {
+  border-bottom: 1px solid #2B3036;
+  &__header {
+    padding: 15px;
+    background: #363C44;
+    border-bottom: 1px solid #2B3036;
+    text-align: center;
+  }
+  &__title {
+    display: inline-flex;
+    border-radius: 5px;
+    background: linear-gradient(to top, #A3B3C4 0%, #C9D2DC 100%);
+  }
+  &__title-text {
+    padding: 20px 45px 20px 30px;
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Bold"), sans-serif;
+    text-shadow: 0 1px 0 rgba(#fff, 0.5);
+    color: #2a2f36;
+  }
+  &__form {
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: linear-gradient(to top, #5E646B 0%, #5E646B 100%);
+      border-top: 1px solid #727982;
+      border-bottom: 1px solid #2B3036;
+  }
+  &__label {
+    @extend %sprite-images;
+    position: relative;
+    width: 40px;
+    height: 37px;
+    background-position: -3px -7px;
+
+  }
+  &__title-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+    padding: 0 15px;
+    &::after {
+      @extend %sprite-images;
+      content: "";
+      display: flex;
+      width: 27px;
+      height: 27px;
+      background-position: -45px -17px;
+    }
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      content: "";
+      border-right: 1px solid #C8D1DC;
+      background: #90A0B1;
+    }
+  }
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-top: 1px solid #3C424B;
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Roman"), sans-serif;
+    font-size: 14px;
+    background: #363C44;
+    color: #fff;
+  }
+  &__count {
+    position: relative;
+    padding-left: 25px;
+    font-family: map.get(vars.$fonts, "Helvetica", "LTStd Medium"), sans-serif;
+    &::before {
+      @extend %sprite-images;
+      @extend %pseudo-element;
+      left: 0;
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &__rss-data {
+
+    .subscription-rss__count::before {
+      background-position: -301px -28px;
+    }
+  }
+  &__twitter-data {
+
+    .subscription-rss__count::before {
+      background-position: -320px -29px;
+    }
+  }
+
+  .default-form__input {
+    width: funcs.calculate-percent(195, 315);
+  }
+
+  .default-form__submit {
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+  }
+}

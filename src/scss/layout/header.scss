@@ -1,0 +1,121 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../base/variables" as vars;
+@use "../base/mixins" as mix;
+@use "../base/functions" as funcs;
+@use "../base/extentsions";
+
+@use "../components/layout/submenu";
+
+// html/layout/header.pug
+.main-header {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  min-height: 105px;
+  font-family: map.get(vars.$fonts, "nevis", "Bold"), sans-serif;
+  &__content {
+    position: relative;
+    justify-content: space-between;
+    align-self: center;
+  }
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+  &__logo-link {
+    margin-right: 10px;
+  }
+  &__slogan {
+    font-size: 14px;
+    color: #a6aab3;
+  }
+  &__menu::before {
+    text-shadow: none;
+  }
+  &__menu-list {
+    display: flex;
+    color: #fff;
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  &__menu-list-item {
+    position: relative;
+    z-index: 1;
+    margin-right: 40px;
+    &.home {
+      position: relative;
+      &::before {
+        @extend %pseudo-element;
+        z-index: 1;
+        top: -9px;
+        left: -9px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgb(13, 13, 14);
+        box-shadow: 0 1px 0 0 rgba(255, 255, 255, .07), inset 0 3px 3px 0 rgba(0, 0, 0, .7);
+        visibility: hidden;
+      }
+      &:hover::before {
+        visibility: visible;
+      }
+
+      a {
+        position: relative;
+        z-index: 2;
+      }
+    }
+    &:last-child {
+      margin: 0;
+    }
+
+    .submenu {
+      top: 30px;
+      left: -55px;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity .5s ease;
+    }
+
+    .submenu-toggler {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 5px;
+      color: #fff;
+    }
+
+    &:hover .submenu {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__menu-link {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  &__toggle {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 4px;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      border-color: #a6bccc;
+      color: #a6bccc;
+    }
+  }
+}

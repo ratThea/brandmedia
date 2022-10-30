@@ -1,0 +1,171 @@
+-
+    const lang = "ru";
+    const keywords = [ "brandmedia", "html", "pug", "scss", "javascript" ];
+    const description = "Brandmedia - тестовая верстка на pug, scss, js.";
+
+    const path = {
+        styles: "css/style.min.css",
+        scripts: "js/main.min.js",
+        favicon: "images/common/favicon.ico"
+    };
+
+    const navigation = [
+        {
+            href: "index.html",
+            html: `<img src="../images/common/home.png" alt="home" title="home">`
+        },
+        {
+            href: "about.html",
+            html: "about us",
+            submenu: [
+                { text: "App Media" },
+                { text: "Branding" },
+                { text: "Case Study" },
+                { text: "Devices" },
+                { text: "Jobs" },
+                { text: "Networks" },
+                { text: "Tutorials" }
+            ]
+        },
+        {
+            href: "portfolio.html",
+            html: "portfolio"
+        },
+        {
+            href: "services.html",
+            html: "services"
+        },
+        {
+            href: "blog.html",
+            html: "blog",
+            submenu: [
+                { text: "App Media" },
+                { text: "Branding" },
+                { text: "Case Study"},
+                { text: "Devices" },
+                { text: "Jobs" },
+                { text: "Networks" },
+                { text: "Tutorials" },
+            ]
+        },
+        {
+            href: "contact.html",
+            html: "contact"
+        }
+    ];
+
+    const footerNavigations = [
+        {
+            header: "Site Navigation",
+            items: [
+                { href: "index.html", text: "Home" },
+                { href: "about.html", text: "About" },
+                { href: "portfolio.html", text: "Portfolio" },
+                { href: "services.html", text: "Services" },
+                { href: "blog.html", text: "Blog" },
+                { href: "contact.html", text: "Contact" },
+            ]
+        },
+        {
+            header: "Blog Categories",
+            items: [
+                { text: "App Media" },
+                { text: "Branding" },
+                { text: "Case Studio" },
+                { text: "Devices" },
+                { text: "Jobs" },
+                { text: "Networks" },
+            ]
+        },
+        {
+            header: "Jobs Board",
+            items: [
+                { text: "Animation" },
+                { text: "Brand Identy" },
+                { text: "Development" },
+                { text: "Graphic Design" },
+                { text: "Marketing" },
+                { text: "Web Design" },
+            ]
+        },
+        {
+            header: "Connect",
+            items: [
+                { text: "Twitter" },
+                { text: "Facebook" },
+                { text: "Youtube" },
+                { text: "Flickr" },
+                { text: "Vimeo" },
+                { text: "Tumblr" },
+            ]
+        },
+    ];
+
+    const serviceInfoItems = [
+        {
+            className: "tour",
+            data: {
+                poster: {
+                    header: "brandmedia tour",
+                    slogan: "Watch the video now",
+                    title: "Videotour",
+                    image: {
+                        src: "images/index/poster/videotour.png",
+                        alt: "Videotour"
+                    }
+
+                },
+                description: {
+                    header: "Brandmedia Tour Video",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et turpis et neque molestie mattis eu vitae lectus.",
+                    button: {
+                        text: "Go to Tour"
+                    }
+                }
+            }
+        },
+        {
+            className: "store",
+            data: {
+                poster: {
+                    header: "brandmedia apps",
+                    slogan: "Avaliable on the Apple",
+                    title: "App Store",
+                    image: {
+                        src: "images/index/poster/appstore.png",
+                        alt: "App Store"
+                    }
+
+                },
+                description: {
+                    header: "App Media Applications",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et turpis et neque molestie mattis eu vitae lectus.",
+                    button: {
+                        text: "App Store"
+                    }
+                }
+            }
+        },
+        {
+            className: "jobs",
+            data: {
+                poster: {
+                    header: "brandmedia jobs",
+                    slogan: "Find a Freelancer",
+                    title: "Job Board",
+                    image: {
+                        src: "images/index/poster/jobs.png",
+                        alt: "Job Board"
+                    }
+
+                },
+                description: {
+                    header: "Professional Jobs",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et turpis et neque molestie mattis eu vitae lectus.",
+                    button: {
+                        text: "Get a Job"
+                    }
+                }
+            }
+        }
+    ];

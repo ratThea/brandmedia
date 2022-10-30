@@ -1,0 +1,16 @@
+// Классы для работы вкладок.
+// Работает вместе с файлом стилей thea-tabs.js
+.thea-tabs {
+  &__header {
+    display: flex;
+  }
+  &__button {
+    cursor: pointer;
+  }
+  &__content {
+    display: none;
+    &.active {
+      display: flex;
+    }
+  }
+}

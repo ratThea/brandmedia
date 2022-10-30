@@ -1,0 +1,71 @@
+// Директивы:
+@use "sass:math";
+@use "sass:map";
+
+// Переменные, расширения, миксины, функции:
+@use "../../base/variables" as vars;
+@use "../../base/mixins" as mix;
+@use "../../base/functions" as funcs;
+@use "../../base/extentsions";
+
+.portfolio-tabs {
+  &__header {
+    display: flex;
+    box-shadow: inset 0 1px 0 #A9B8BF;
+    border-radius: 5px;
+    font-family: map.get(vars.$fonts, "nevis", "Bold"), sans-serif;
+    font-size: 12px;
+    background: linear-gradient(to top, #67747F 0%, #83949D 100%);
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .15);
+    overflow: hidden;
+  }
+  &__button {
+    position: relative;
+    display: flex;
+    padding: 10px 17.5px;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    cursor: pointer;
+    &:nth-child(2) {
+      padding-left: 25px;
+      border-left: 1px solid #6E7C87;
+    }
+
+    // Модификаторы:
+    &_favorite {
+      padding: 10px 15px;
+      box-shadow: inset 0 1px 0 #CED8DC;
+      border-right: 1px solid #BEC6CB;
+      background: linear-gradient(to top, #A6B0B7 0%, #B5C0C7 100%);
+      color: #C24F3E;
+    }
+    &:not(&_favorite):hover {
+      background: linear-gradient(to bottom, #67747F 0%, #83949D 100%);
+    }
+    &:not(&_favorite):active {
+      background:#67747F;
+    }
+    &:not(&_favorite).active {
+      background: linear-gradient(to top, #C83332 0%, #BF5D44 100%);
+      border-left-color: #AF2F2E;
+      border-right-color: #AF2F2E;
+      box-shadow: inset 0 1px 0 #CF8673;
+      &::before,
+      &::after {
+        @extend %pseudo-element;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: #8F9AA2;
+      }
+      &::before {
+        left: -2px;
+      }
+      &::after {
+        right: -2px;
+      }
+    }
+  }
+}

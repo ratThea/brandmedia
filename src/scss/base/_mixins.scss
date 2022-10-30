@@ -1,0 +1,67 @@
+@use "sass:math";
+@use "sass:map";
+@use "variables" as vars;
+@use "functions" as funcs;
+
+// Миксины:
+
+/// Поключает шрифт локально. Использует "woff", "woff2", "ttf".
+///
+/// @param {string} $family
+///   Название семейства шрифтов
+/// @param {string} $path
+///   Путь к файлам (должен быть одинаковый для всех расширений)
+@mixin font-face($family, $path) {
+
+    @font-face {
+        font-family: $family;
+        font-weight: normal;
+        font-style: normal;
+
+        src: url("#{ $path }.ttf") format("truetype"),
+             url("#{ $path }.woff") format("woff"),
+             url("#{ $path }.woff2") format("woff2");
+    }
+
+}
+
+/// Добавляет базовые медиа-запросы: описывает максимальную ширину контейнера при соотвествующих брейкпоинтах.
+///
+/// @param {map} $template
+///    Массив вида: "name" : ( "breakpoint", "container-width" )
+@mixin base-media($template) {
+
+  @each $name, $data in $template {
+    @if($name != "default") {
+
+      @media screen and (max-width: map.get($data, "breakpoint")) {
+
+        .container {
+          @if($name == "xs") {
+            width: funcs.set-units(map.get($data, "container-width"), "%");
+          } @else {
+            width: funcs.set-units(map.get($data, "container-width"));
+          }
+        }
+
+      }
+
+    }
+  }
+
+}
+
+/// Считает ширину в процентах относительно ширины контейнера.
+///
+/// @param {number} $target
+//    Элемент, ширину которого надо рассчитать
+/// @param {string} $type
+///   Тип контейнера, от которого надо считать проценты (берется из $media)
+/// @param {boolean} $min Если true, то установит не "width", а "min-width"
+@mixin width-percent-by-container($target, $type: "default", $min: false) {
+  @if($min) {
+    min-width: funcs.calculate-percent($target, map.get(vars.$media, $type, "container-width"));
+  } @else {
+    width: funcs.calculate-percent($target, map.get(vars.$media, $type, "container-width"));
+  }
+}

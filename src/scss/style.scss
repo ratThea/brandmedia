@@ -1,0 +1,37 @@
+// Базовые стили:
+@use "base/custom_reset";
+@use "base/global";
+@use "base/sticky_footer";
+
+// Шрифты:
+@use "fonts";
+
+// Библиотеки:
+@use "libs/thea-tabs";
+@use "libs/thea-slider";
+
+// Глобальные компоненты:
+@use "components/global/slider";
+@use "components/global/page-title";
+@use "components/global/about-article";
+@use "components/global/button";
+@use "components/global/default-form";
+@use "components/global/service-info";
+@use "components/global/subscribe-form";
+@use "components/global/image-popup";
+@use "components/global/popup-overlay";
+
+// Повторяющеися части макета:
+@use "layout/header";
+@use "layout/footer";
+
+// Стили страниц (специфические компоненты каждой из страниц подключаются в файле со стилями текущей страницы):
+@use "pages/index";
+@use "pages/blog";
+@use "pages/about";
+@use "pages/portfolio";
+@use "pages/services";
+@use "pages/contact";
+
+// Адаптивность:
+@use "responsive";

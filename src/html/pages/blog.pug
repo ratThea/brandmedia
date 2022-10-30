@@ -1,0 +1,60 @@
+section.blog
+
+    .container.blog__content
+
+        +page_title(title, "This is subtitle", "blog-search")
+
+        .blog__page-content
+            .blog__posts-wrapper
+                .blog-posts
+                   each post in posts
+                       +blog_post(post)
+                .blog__posts-pagination
+                    a.blog__posts-prev(href="#") Previous Page
+                    a.blog__posts-prev(href="#") Next Page
+
+            .main-aside
+                .subscription-rss
+                    .subscription-rss__header
+                        .subscription-rss__title
+                            span.subscription-rss__title-text Subscribe via RSS
+                            span.subscription-rss__title-icon
+                    form.subscription-rss__form.default-form.default-form_rss(action="#")
+                        label.subscription-rss__label(for="rss-input")
+                        input.subscription-rss__input.default-form__input#rss-input(name="rss-input" type="email" placeholder="Your email address" required)
+                        button.default-form__submit.button.button_rss(type="submit")
+                            i.fa-solid.fa-plus
+                    .subscription-rss__data
+                        div.subscription-rss__rss-data!= `<span class="subscription-rss__count">123456</span> Readers`
+                        div.subscription-rss__twitter-data!= `<span class="subscription-rss__count">12568</span> Followers`
+                .aside-nav.aside-nav_red
+                    h6.aside-nav__header categories
+                    .aside-nav__body
+                        each list in asideNav.categories
+                            ul.aside-nav__list
+                                each data in list
+                                    - const { text } = data;
+                                    +create_nav_item("aside-nav__list-item", "aside-nav__list-link", text)
+                .aside-nav
+                    h6.aside-nav__header archives
+                    .aside-nav__body
+                        each list in asideNav.archive
+                            ul.aside-nav__list
+                                each data in list
+                                    - const { text } = data;
+                                    +create_nav_item("aside-nav__list-item", "aside-nav__list-link", text)
+                .recent-activity#recent-activity
+                    .recent-activity__header
+                        span.recent-activity__button Recent Comments
+                        span.recent-activity__button Popular Posts
+                    .recent-activity__body
+                        .recent-activity__content
+                            .comments
+                                ul.comments__list
+                                   each item in recentComments
+                                       +recent_comment(item)
+                        .recent-activity__content Popular posts (для них дизайна нет)
+
+section.subscription
+    .container.subscription__content
+        +subscribe_form

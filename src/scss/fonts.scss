@@ -1,0 +1,17 @@
+@use "base/mixins" as mix;
+
+// Helvetica Family:
+@include mix.font-face("HelveticaNeueBold", "../fonts/HelveticaNeueBold/HelveticaNeueBold");
+@include mix.font-face("HelveticaNeueLTStdBd", "../fonts/HelveticaNeueLTStdBd/HelveticaNeueLTStdBd");
+@include mix.font-face("HelveticaNeueLTStdMd", "../fonts/HelveticaNeueLTStdMd/HelveticaNeueLTStdMd");
+@include mix.font-face("HelveticaNeueLTStdRoman", "../fonts/HelveticaNeueLTStdRoman/HelveticaNeueLTStdRoman");
+
+// MyriadPro Family:
+@include mix.font-face("MyriadProBlackIt", "../fonts/MyriadProBlackIt/MyriadProBlackIt");
+@include mix.font-face("MyriadProBlackSemiCnIt", "../fonts/MyriadProBlackSemiCnIt/MyriadProBlackSemiCnIt");
+@include mix.font-face("MyriadProRegular", "../fonts/MyriadProRegular/MyriadProRegular");
+@include mix.font-face("MyriadProSemiboldItalic", "../fonts/MyriadProSemiboldItalic/MyriadProSemiboldItalic");
+
+// Остальные:
+@include mix.font-face("NevisBold", "../fonts/NevisBold/NevisBold");
+@include mix.font-face("OfficinaSerITCStdBlackItalic", "../fonts/OfficinaSerITCStdBlackItalic/OfficinaSerITCStdBlackItalic");

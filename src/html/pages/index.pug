@@ -1,0 +1,51 @@
+section.presentation
+    .container.presentation__content
+        .presentation__description
+            span.presentation__title Creative Agency
+            span.presentation__slogan We Make Dreams
+            span.presentation__subtitle Beautiful interfaces and creative solutions
+            .presentation__buttons
+                +button_link("Read More", "read-more")
+                +button_link("Portfolio", "portfolio")
+        .presentation__slider-wrapper
+            .slider.slider_presentation
+                .slider__screen-wrapper(title="Чтобы включить/выключить навигацию надо кликнуть по экрану")
+                    .slider__nav.active#presentation-slider-nav
+                        button.slider__prev#presentation-slider-prev
+                        button.slider__toggle#presentation-slider-toggle
+                        button.slider__next#presentation-slider-next
+                    .slider__screen#presentation-slider
+                        .slider__slide
+                            img(src="images/sliders/presentation/taylor_swift_1.jpg" alt="Taylor Swift")
+                        .slider__slide
+                            img(src="images/sliders/presentation/taylor_swift_2.jpg" alt="Taylor Swift")
+                        .slider__slide
+                            img(src="images/sliders/presentation/taylor_swift_3.jpg" alt="Taylor Swift")
+                        .slider__slide
+                            img(src="images/sliders/presentation/taylor_swift_4.jpg" alt="Taylor Swift")
+                        .slider__slide
+                            img(src="images/sliders/presentation/taylor_swift_5.jpg" alt="Taylor Swift")
+                        .slider__slide
+                            img(src="images/sliders/presentation/taylor_swift_6.jpg" alt="Taylor Swift")
+                        .slider__slide
+                            img(src="images/sliders/presentation/taylor_swift_7.jpg" alt="Taylor Swift")
+                        .slider__slide
+                            img(src="images/sliders/presentation/taylor_swift_8.jpg" alt="Taylor Swift")
+                        .slider__slide
+                            img(src="images/sliders/presentation/taylor_swift_9.jpg" alt="Taylor Swift")
+                        .slider__slide
+                            img(src="images/sliders/presentation/taylor_swift_10.jpg" alt="Taylor Swift")
+                .slider__dots#presentation-slider-dots
+
+section.about-offers
+    .container.about-offers__content
+        +about_offers_info(aboutOffers)
+
+section.services
+    .container.services__content
+        each item in serviceInfoItems
+            +service-info(item)
+
+section.subscription
+    .container.subscription__content
+        +subscribe_form
