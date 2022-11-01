@@ -320,7 +320,11 @@ export class TheaSlider {
      * @private
      */
     _autoplay() {
-        this._config.settings.autoplay.timerId = setInterval(this._slide.bind(this, { type: "next", autoplay: true }), this._config.offset.speed);
+        const $ = this;
+        this._config.settings.autoplay.timerId = setTimeout(function autoplayTimeout() {
+            $._slide.bind($, { type: "next", autoplay: true })();
+            $._config.settings.autoplay.timerId = setTimeout(autoplayTimeout, $._config.offset.speed);
+        }, $._config.offset.speed)
     }
 
     /**
