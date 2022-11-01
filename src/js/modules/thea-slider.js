@@ -56,9 +56,9 @@ export class TheaSlider {
         this._config = {};
 
         const baseWidth       = this._root.offsetWidth,
-              baseHeight      = this._root.offsetHeight,
-              baseLength      = this._slides.items.length,
-              transitionSpeed = speed * 1000;
+            baseHeight      = this._root.offsetHeight,
+            baseLength      = this._slides.items.length,
+            transitionSpeed = speed * 1000;
 
         this._config.slide = {
             width: baseWidth,
@@ -224,15 +224,15 @@ export class TheaSlider {
 
         if(this._config.controls.dots.isSet) {
             this._config.controls.dots.container.addEventListener("click", event => {
-               event.stopPropagation();
-               const dotElement = event.target.closest("[data-point]");
-               if(dotElement) {
-                   const data = {
-                       type: dotElement.dataset.action = "scroll",
-                       index: +dotElement.dataset.point
-                   };
-                   this._slide.bind(this, data)();
-               }
+                event.stopPropagation();
+                const dotElement = event.target.closest("[data-point]");
+                if(dotElement) {
+                    const data = {
+                        type: dotElement.dataset.action = "scroll",
+                        index: +dotElement.dataset.point
+                    };
+                    this._slide.bind(this, data)();
+                }
             });
         }
 
@@ -277,7 +277,7 @@ export class TheaSlider {
      * @param activate
      * @private
      */
-    _toggle(activate = true) {
+    _toggleActiveSlide(activate = true) {
         const action = activate ? "add" : "remove";
         this._slides.items[this._config.slide.activeIndex].classList[action]("active");
         if(this._config.controls.dots.isSet) {
@@ -292,7 +292,7 @@ export class TheaSlider {
      * @param {Boolean} autoplay Вызван ли метод slide через метод _autoplay (указывается только в нем)
      * @private
      */
-    _able({ type, index, autoplay = false }) {
+    _able({ type, index = null, autoplay = false }) {
 
         if(autoplay && this._config.settings.state.status === "paused") return false;
 
@@ -312,7 +312,6 @@ export class TheaSlider {
         }
 
         return false;
-
     }
 
     /**
@@ -320,11 +319,7 @@ export class TheaSlider {
      * @private
      */
     _autoplay() {
-        const $ = this;
-        this._config.settings.autoplay.timerId = setTimeout(function autoplayTimeout() {
-            $._slide.bind($, { type: "next", autoplay: true })();
-            $._config.settings.autoplay.timerId = setTimeout(autoplayTimeout, $._config.offset.speed);
-        }, $._config.offset.speed)
+        this._config.settings.autoplay.timerId = setInterval(this._slide.bind(this, { type: "next", autoplay: true }), this._config.offset.speed);
     }
 
     /**
@@ -360,12 +355,12 @@ export class TheaSlider {
             this._container.style.left = `${ this._config.offset.left }px`;
 
             this._config.slide.activeIndex = loopData.newActiveIndex;
-            this._toggle();
+            this._toggleActiveSlide();
 
             setTimeout(() => {
                 this._container.style.transition = this._config.settings.transition;
                 this._config.settings.state.cooldown = false;
-           }, this._config.offset.speed / 100);
+            }, this._config.offset.speed / 100);
 
         }, this._config.offset.speed);
     }
@@ -377,10 +372,10 @@ export class TheaSlider {
      * @param {Boolean} autoplay Вызван ли метод slide через метод _autoplay (указывается только в нем)
      * @private
      */
-    _slide({ type, index, autoplay = false}) {
+    _slide({ type, index = null, autoplay = false}) {
         if(this._able({ type, index, autoplay })) {
             this._config.settings.state.cooldown = true;
-            this._toggle(false);
+            this._toggleActiveSlide(false);
 
             if(type === "prev") {
                 if(this._config.slide.activeIndex - 1 < 0) {
@@ -408,7 +403,7 @@ export class TheaSlider {
             }
 
             this._container.style.left = `${ this._config.offset.left }px`;
-            this._toggle();
+            this._toggleActiveSlide();
             setTimeout(() => this._config.settings.state.cooldown = false, this._config.offset.speed);
         }
     }
@@ -435,8 +430,6 @@ export class TheaSlider {
     toggle() {
         window.event.stopPropagation();
         this._togglePause();
-        this._config.settings.autoplay.isSet = true;
-        this._config.settings.state.cooldown = false;
         this._autoplay();
     }
 }
