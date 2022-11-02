@@ -8,15 +8,16 @@ export class TheaSlider {
      * @param {HTMLElement} root Корневой html-элемент слайдера (родительский для всех слайдов). Обязательный параметр
      * @param {Object} controls Объект с настройками элементов управления. Обязательный параметр
      * @param {Number} startActive Индекс первого активного слайда
-     * @param {Number} speed Скорость перелистывания (в секундах)
+     * @param {Number} speed Скорость перелистывания (в обычных секундах)
      * @param {Boolean} infinite Если true, слайдер будет бесконечным
      * @param {Boolean} autoplay Включить по умолчанию
      * @param {Boolean} draggable Если true, слайды можно будет перетаскивать мышкой
+     * @param {Boolean} reversed Если true, слайдер будет перелистываться в обратную сторону
      */
-    constructor({ root, controls, startActive = 0, speed = 1, infinite = true, autoplay = true, draggable = true }) {
+    constructor({ root, controls, startActive = 0, speed = 1, infinite = true, autoplay = true, draggable = true, reversed = false }) {
         if (root && root.children.length && controls) {
 
-            this._setupBase(root, controls, startActive, speed, infinite, autoplay, draggable);
+            this._setupBase(root, controls, startActive, speed, infinite, autoplay, draggable, reversed);
             this._setupControls();
             this._setupHandlers();
 
@@ -50,15 +51,16 @@ export class TheaSlider {
      * @param {Boolean} infinite
      * @param {Boolean} autoplay
      * @param {Boolean} draggable
+     * @param {Boolean} reversed
      * @private
      */
-    _configure(controls, startActive, speed, infinite, autoplay, draggable) {
+    _configure(controls, startActive, speed, infinite, autoplay, draggable, reversed) {
         this._config = {};
 
         const baseWidth       = this._root.offsetWidth,
-            baseHeight      = this._root.offsetHeight,
-            baseLength      = this._slides.items.length,
-            transitionSpeed = speed * 1000;
+              baseHeight      = this._root.offsetHeight,
+              baseLength      = this._slides.items.length,
+              transitionSpeed = speed * 1000;
 
         this._config.slide = {
             width: baseWidth,
@@ -77,16 +79,18 @@ export class TheaSlider {
         };
 
         this._config.settings = {
+            reversed: reversed,
             state: {
-                status: autoplay ? "active" : "paused", // "active" или "paused"
-                cooldown: !autoplay
+                status: autoplay ? "active" : "paused",
+                cooldown: false,
+                cooldownDelay: 300
             },
             autoplay: {
                 isSet: autoplay,
                 timerId: null
             },
             infinite: infinite,
-            transition: `left ${ speed }s ease`,
+            transition: `left ${ speed }s ease 0s`,
             draggable: {
                 isSet: draggable,
                 startDragPosition: 0,
@@ -124,13 +128,14 @@ export class TheaSlider {
      * @param {Boolean} infinite
      * @param {Boolean} autoplay
      * @param {Boolean} draggable
+     * @param {Boolean} reversed
      * @private
      */
-    _setupBase(root, controls, startActive, speed, infinite, autoplay, draggable) {
+    _setupBase(root, controls, startActive, speed, infinite, autoplay, draggable, reversed) {
         this._root = root;
         this._slides = { items: Array.from(this._root.children) };
 
-        this._configure(controls, startActive, speed, infinite, autoplay, draggable);
+        this._configure(controls, startActive, speed, infinite, autoplay, draggable, reversed);
 
         if(infinite) {
             this._slides.before = this._slides.items[this._slides.items.length - 1].cloneNode(true);
@@ -237,7 +242,7 @@ export class TheaSlider {
         }
 
         if(this._config.settings.draggable.isSet) {
-            this._container.addEventListener("mousedown", event => {
+            this._root.addEventListener("mousedown", event => {
                 // Подготовка к перетаскиванию:
                 event.preventDefault(); // Отключение "dragstart" по умолчанию.
                 event.stopPropagation();
@@ -246,14 +251,15 @@ export class TheaSlider {
 
                 // Обработка события движения мыши:
                 const moveHandler = this._dragSlide.bind(this);
-                this._container.addEventListener("mousemove", moveHandler)
+                document.addEventListener("mousemove", moveHandler)
 
                 // Возврат в исходное состояние:
-                this._container.onmouseup = () => {
-                    document.removeEventListener("mousemove", moveHandler);
+                this._root.onmouseup = () => {
                     this._container.classList.remove("being-dragged");
+                    document.removeEventListener("mousemove", moveHandler);
                     this._config.settings.draggable.startDragPosition = 0;
-                    this._container.onmouseup = null;
+                    this._root.onmouseup = null;
+                    return false;
                 }
             });
         }
@@ -286,24 +292,53 @@ export class TheaSlider {
     }
 
     /**
+     * Запускает слайдер, как только объект будет создан и настроен.
+     * @private
+     */
+    _autoplay() {
+        const $ = this;
+        $._config.settings.autoplay.timerId = setTimeout(function autoplayTimeout() {
+            if($._config.settings.state.status !== "paused") {
+                $._slide.bind($, { type: $._config.settings.reversed ? "prev" : "next" })();
+                $._config.settings.autoplay.timerId = setTimeout(autoplayTimeout, $._config.offset.speed);
+            }
+        }, $._config.offset.speed);
+    }
+
+    /**
+     * Ставит на паузу или возобновляет работу слайдера. Меняет флаг "this._config.settings.state.status" с "active" на "paused" и наоборот.
+     * @private
+     */
+    _togglePause() {
+        const status = this._config.settings.state.status === "active" ? "paused" : "active";
+
+        if(status === "paused") {
+            clearTimeout(this._config.settings.autoplay.timerId);
+        }
+
+        if(this._config.controls.buttons.toggle) {
+            this._config.controls.buttons.toggle.dataset.status = status;
+        }
+
+        this._config.settings.state.status = status;
+    }
+
+    /**
      * Проверяет, можно ли выполнить действие - сдвинуть слайды каким либо образом.
      * @param {String} type Тип действия (prev/next/scroll)
      * @param {Number} index Индекс слайда, который надо сделать актинвым (указывается только при type = "scroll")
-     * @param {Boolean} autoplay Вызван ли метод slide через метод _autoplay (указывается только в нем)
      * @private
      */
-    _able({ type, index = null, autoplay = false }) {
-
-        if(autoplay && this._config.settings.state.status === "paused") return false;
+    _able({ type, index = -1 }) {
 
         if(!this._config.settings.state.cooldown) {
 
             if(type === "prev") {
-                return (this._config.slide.activeIndex - 1 >= 0 && !this._config.settings.infinite) || this._config.settings.infinite;
+                return this._config.slide.activeIndex - 1 > 0 || this._config.settings.infinite;
             }
 
             if(type === "next") {
-                return (this._config.slide.activeIndex + 1 <= this._config.slide.lastIndex && !this._config.settings.infinite) || this._config.settings.infinite;
+                return this._config.slide.activeIndex + 1 < this._config.slide.lastIndex || this._config.settings.infinite;
             }
 
             if(type === "scroll") {
@@ -315,96 +350,51 @@ export class TheaSlider {
     }
 
     /**
-     * Запускает слайдер, как только объект будет создан и настроен.
-     * @private
-     */
-    _autoplay() {
-        this._config.settings.autoplay.timerId = setInterval(this._slide.bind(this, { type: "next", autoplay: true }), this._config.offset.speed);
-    }
-
-    /**
-     * Ставит на паузу или возобновляет работу слайдера. Меняет флаг "this._config.settings.state.status" с "active" на "paused" и наоборот.
-     * @private
-     */
-    _togglePause() {
-        const status = this._config.settings.state.status === "active" ? "paused" : "active";
-        this._config.settings.state.status = status;
-        if(this._config.controls.buttons.toggle) {
-            this._config.controls.buttons.toggle.dataset.status = status;
-        }
-    }
-
-    /**
-     * Перескакивает с последнего на первый элемент или наоборот, делая слайдер бесконечным.
-     * @param {String} type
-     * @private
-     */
-    _loopSlider(type) {
-
-        const loopData = {
-            clonePosition:  (type === "prev") ? this._config.offset.left += this._config.offset.width : this._config.offset.left -= this._config.offset.width,
-            hiddenOffset:   (type === "prev") ? this._config.offset.max : -this._config.offset.width,
-            newActiveIndex: (type === "prev") ? this._config.slide.lastIndex : 0
-        };
-
-        this._container.style.left = `${ loopData.clonePosition }px`;
-
-        setTimeout(() => {
-            this._container.style.transition = "none";
-            this._config.offset.left = loopData.hiddenOffset;
-            this._container.style.left = `${ this._config.offset.left }px`;
-
-            this._config.slide.activeIndex = loopData.newActiveIndex;
-            this._toggleActiveSlide();
-
-            setTimeout(() => {
-                this._container.style.transition = this._config.settings.transition;
-                this._config.settings.state.cooldown = false;
-            }, this._config.offset.speed / 100);
-
-        }, this._config.offset.speed);
-    }
-
-    /**
      * Выполняет сдвиг слайдера, в зависимости от переданного действия.
      * @param {String} type Тип действия (prev/next/scroll)
      * @param {Number} index Индекс слайда, который надо сделать актинвым (указывается только при type = "scroll")
-     * @param {Boolean} autoplay Вызван ли метод slide через метод _autoplay (указывается только в нем)
      * @private
      */
-    _slide({ type, index = null, autoplay = false}) {
-        if(this._able({ type, index, autoplay })) {
+    _slide({ type, index = -1 }) {
+        if(this._able({ type, index })) {
+
             this._config.settings.state.cooldown = true;
             this._toggleActiveSlide(false);
 
-            if(type === "prev") {
-                if(this._config.slide.activeIndex - 1 < 0) {
-                    this._loopSlider(type);
-                    return;
-                }
-
-                this._config.offset.left += this._config.offset.width;
-                this._config.slide.activeIndex--;
-            }
-
             if(type === "next") {
-                if(this._config.slide.activeIndex + 1 > this._config.slide.lastIndex) {
-                    this._loopSlider(type);
-                    return;
-                }
-
                 this._config.offset.left -= this._config.offset.width;
                 this._config.slide.activeIndex++;
             }
 
+            if(type === "prev") {
+                this._config.offset.left += this._config.offset.width;
+                this._config.slide.activeIndex--;
+            }
+
             if(type === "scroll") {
-                this._config.offset.left = -this._config.offset.width * ( this._config.settings.infinite ? index + 1 : index );
-                this._config.slide.activeIndex = index;
+                this._config.offset.left = -this._config.offset.width * ((this._config.settings.infinite) ? index + 1 : index);
+                this._config.slide.activeIndex =  index;
             }
 
             this._container.style.left = `${ this._config.offset.left }px`;
-            this._toggleActiveSlide();
-            setTimeout(() => this._config.settings.state.cooldown = false, this._config.offset.speed);
+
+            this._container.ontransitionend =  () => {
+                this._container.style.transition = "left 0s ease 0s";
+
+                if(this._config.slide.activeIndex === -1 || this._config.slide.activeIndex === this._config.slide.count) {
+                    this._config.offset.left = this._config.slide.activeIndex === -1 ? this._config.offset.max : this._config.offset.min;
+                    this._config.slide.activeIndex = this._config.slide.activeIndex === -1 ? this._config.slide.lastIndex : 0;
+                    this._container.style.left = `${this._config.offset.left}px`;
+
+                }
+
+                this._toggleActiveSlide();
+                setTimeout(() => {
+                    this._container.style.transition = this._config.settings.transition;
+                    this._config.settings.state.cooldown = false;
+                    this._container.ontransitionend = null;
+                }, this._config.settings.state.cooldownDelay);
+            };
         }
     }
 
