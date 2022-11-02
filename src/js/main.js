@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const presentationSlider = new TheaSlider({
         root: document.getElementById("presentation-slider"),
         speed: 1.5,
-        autoplay: true,
         draggable: false,
         controls: {
             buttons: {
