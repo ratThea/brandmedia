@@ -267,13 +267,13 @@ export class TheaSlider {
     }
 
     /**
-     * Обрабатывает события mouseup.
+     * Прекращает перетаскивание слайдов (при событии "mouseup" или "mouseleave").
      * @param {Object} event
      * @private
      */
     _stopDrag(event) {
         this._container.classList.remove("being-dragged");
-        this._container.removeEventListener("mousemove", this._handleMouseUp);
+        this._container.removeEventListener("mousemove", this._stopDrag);
 
         this._config.settings.draggable.currently = false;
         this._config.settings.draggable.startDragPosition = 0;
