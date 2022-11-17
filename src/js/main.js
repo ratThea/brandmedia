@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Все табы на сайте:
     const recentActivityTabs = new TheaTabs({ root: document.getElementById("recent-activity") }),
-          portfolioTabs      = new TheaTabs({ root: document.getElementById("portfolio-tabs"), startActive: 3, equalify: false }),
+          portfolioTabs      = new TheaTabs({ root: document.getElementById("portfolio-tabs"), startActive: 3, equalify: false, hideType: "visually" }),
           aboutTabs          = new TheaTabs({ root: document.getElementById("about-tabs") })
 
     // Слайдер на главной странице (index.html):
