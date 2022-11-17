@@ -299,11 +299,12 @@ export class TheaSlider {
      */
     _autoplay() {
         const $ = this;
-        $._config.settings.autoplay.timerId = setInterval(() => {
+        $._config.settings.autoplay.timerId = setTimeout(function autoplayTimeout() {
             if($._config.settings.state.status !== "paused") {
                 $._slide.call($, {type: $._config.settings.reversed ? "prev" : "next"});
             }
-        }, $._config.offset.speed);
+            $._config.settings.autoplay.timerId = setTimeout(autoplayTimeout, $._config.offset.speed);
+        }, 0);
     }
 
     /**
@@ -317,6 +318,8 @@ export class TheaSlider {
         if(this._config.controls.buttons.toggle) {
             this._config.controls.buttons.toggle.dataset.status = status;
         }
+
+        clearTimeout(this._config.autoplay.timerId);
     }
 
     /**
