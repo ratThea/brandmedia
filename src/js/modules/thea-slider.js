@@ -5,7 +5,7 @@
  */
 export class TheaSlider {
     /**
-     * @param {HTMLElement} root Корневой html-элемент слайдера (родительский для всех слайдов). Обязательный параметр
+     * @param {HTMLElement} root Корневой элемент. Обязательный параметр
      * @param {Object} controls Объект с настройками элементов управления. Обязательный параметр
      * @param {Number} startActive Индекс первого активного слайда
      * @param {Number} speed Скорость перелистывания (в обычных секундах)
@@ -17,11 +17,11 @@ export class TheaSlider {
     constructor({ root, controls, startActive = 0, speed = 1, infinite = true, autoplay = true, draggable = true, reversed = false }) {
         if (root && root.children.length && controls) {
 
-            this._setupBase(root, controls, startActive, speed, infinite, autoplay, draggable, reversed);
-            this._setupControls();
-            this._setupHandlers();
+            this._root = root;
+            this._slides = { items: Array.from(this._root.children) };
+            this._configure(controls, startActive, speed, infinite, autoplay, draggable, reversed);
 
-            if(autoplay) this._autoplay();
+            this.init();
         }
     }
 
@@ -33,18 +33,17 @@ export class TheaSlider {
     _prefixClass = "thea-slider";
     _baseClasses = {
         root: this._prefixClass,
-        container: `${ this._prefixClass }__container`,
-        slide: `${ this._prefixClass }__slide`,
+        container: `${this._prefixClass}__container`,
+        slide: `${this._prefixClass}__slide`,
         controls: {
             dots: {
-                container: `${ this._prefixClass }__dots`,
-                dot: `${ this._prefixClass }__dot`
+                container: `${this._prefixClass}__dots`,
+                dot: `${this._prefixClass}__dot`
             }
         }
     };
 
     /**
-     * Устанавливает настройки в объекте "this._config". Все параметры дублируют конструктор.
      * @param {Object} controls
      * @param {Number} startActive
      * @param {Number} speed
@@ -52,7 +51,6 @@ export class TheaSlider {
      * @param {Boolean} autoplay
      * @param {Boolean} draggable
      * @param {Boolean} reversed
-     * @private
      */
     _configure(controls, startActive, speed, infinite, autoplay, draggable, reversed) {
         this._config = {};
@@ -90,11 +88,12 @@ export class TheaSlider {
                 timerId: null
             },
             infinite: infinite,
-            transition: `left ${ speed }s ease 0s`,
+            transition: `left ${speed}s ease 0s`,
             draggable: {
                 isSet: draggable,
+                currently: false,
                 startDragPosition: 0,
-                dragRequiredOffset: 25
+                dragRequiredOffset: 5
             }
         };
 
@@ -119,37 +118,28 @@ export class TheaSlider {
         }
     }
 
+
     /**
-     * Устанавливает базовую разметку, стили и классы. Вызывает "_configure", "_setupBaseStyles". Параметры дублируют конструктор.
-     * @param {HTMLElement} root
-     * @param {Object} controls
-     * @param {Number} startActive
-     * @param {Number} speed
-     * @param {Boolean} infinite
-     * @param {Boolean} autoplay
-     * @param {Boolean} draggable
-     * @param {Boolean} reversed
-     * @private
+     * Инициазизация слайдера.
      */
-    _setupBase(root, controls, startActive, speed, infinite, autoplay, draggable, reversed) {
-        this._root = root;
-        this._slides = { items: Array.from(this._root.children) };
-
-        this._configure(controls, startActive, speed, infinite, autoplay, draggable, reversed);
-
-        if(infinite) {
+    init() {
+        if(this._config.settings.infinite) {
             this._slides.before = this._slides.items[this._slides.items.length - 1].cloneNode(true);
             this._slides.after = this._slides.items[0].cloneNode(true);
         }
 
         this._container = document.createElement("div");
         this._root.append(this._container);
-        (infinite) ? this._container.append(this._slides.before, ...this._slides.items, this._slides.after) : this._container.append(...this._slides.items);
+        (this._config.settings.infinite) ? this._container.append(this._slides.before, ...this._slides.items, this._slides.after) : this._container.append(...this._slides.items);
+
+        this._container.style.left = `${this._config.offset.left}px`;
+        this._slides.items[this._config.slide.activeIndex].classList.add("active");
 
         this._setupBaseStyles();
+        this._setupControls();
+        this._setupHandlers();
 
-        this._container.style.left = `${ this._config.offset.left }px`;
-        this._slides.items[ this._config.slide.activeIndex ].classList.add("active");
+        if(this._config.settings.autoplay) this._autoplay();
     }
 
     /**
@@ -163,22 +153,22 @@ export class TheaSlider {
 
         this._slides.items.forEach(slideItem => {
             slideItem.classList.add(this._baseClasses.slide);
-            slideItem.style.width = `${ this._config.slide.width }px`;
-            slideItem.style.height = `${ this._config.slide.height }px`;
+            slideItem.style.width = `${this._config.slide.width}px`;
+            slideItem.style.height = `${this._config.slide.height}px`;
         });
 
         if(this._config.settings.infinite) {
 
             const mainSlideClass = this._slides.items[0].className;
 
-            this._slides.before.className = `${ this._baseClasses.slide } ${ mainSlideClass } clone-last`;
-            this._slides.after.className  = `${ this._baseClasses.slide } ${ mainSlideClass } clone-first`;
+            this._slides.before.className = `${this._baseClasses.slide} ${mainSlideClass} clone-last`;
+            this._slides.after.className  = `${this._baseClasses.slide} ${mainSlideClass} clone-first`;
 
-            this._slides.before.style.width = `${ this._config.slide.width }px`;
-            this._slides.after.style.width  = `${ this._config.slide.width }px`;
+            this._slides.before.style.width = `${this._config.slide.width}px`;
+            this._slides.after.style.width  = `${this._config.slide.width}px`;
 
-            this._slides.before.style.height = `${ this._config.slide.height }px`;
-            this._slides.after.style.height  = `${ this._config.slide.height }px`;
+            this._slides.before.style.height = `${this._config.slide.height}px`;
+            this._slides.after.style.height  = `${this._config.slide.height}px`;
         }
     }
 
@@ -201,8 +191,8 @@ export class TheaSlider {
 
             for(let point = 0; point < this._config.slide.count; point++) {
                 const dotElement = document.createElement("span");
-                dotElement.className = `${ this._baseClasses.controls.dots.dot } ${ dotClass }`;
-                dotElement.dataset.point  = `${ point }`;
+                dotElement.className = `${this._baseClasses.controls.dots.dot} ${dotClass}`;
+                dotElement.dataset.point  = `${point}`;
                 dotElements.push(dotElement);
             }
 
@@ -217,7 +207,6 @@ export class TheaSlider {
      * @private
      */
     _setupHandlers() {
-
         if(this._config.controls.buttons.isSet) {
             const { prev, next, toggle } = this._config.controls.buttons;
             prev.addEventListener("click",  this.prev.bind(this));
@@ -236,34 +225,18 @@ export class TheaSlider {
                         type: dotElement.dataset.action = "scroll",
                         index: +dotElement.dataset.point
                     };
-                    this._slide.bind(this, data)();
+
+                    this._slide.call(this, data);
                 }
             });
         }
 
         if(this._config.settings.draggable.isSet) {
-            this._root.addEventListener("mousedown", event => {
-                // Подготовка к перетаскиванию:
-                event.preventDefault(); // Отключение "dragstart" по умолчанию.
-                event.stopPropagation();
-                this._container.classList.add("being-dragged");
-                this._config.settings.draggable.startDragPosition = event.pageX;
-
-                // Обработка события движения мыши:
-                const moveHandler = this._dragSlide.bind(this);
-                document.addEventListener("mousemove", moveHandler)
-
-                // Возврат в исходное состояние:
-                this._root.onmouseup = () => {
-                    this._container.classList.remove("being-dragged");
-                    document.removeEventListener("mousemove", moveHandler);
-                    this._config.settings.draggable.startDragPosition = 0;
-                    this._root.onmouseup = null;
-                    return false;
-                }
-            });
+            this._container.addEventListener("mousedown", this._handleMouseDown.bind(this));
+            this._container.addEventListener("mousemove", this._handleMouseDrag.bind(this));
+            this._container.addEventListener("mouseup", this._stopDrag.bind(this));
+            this._container.addEventListener("mouseleave", this._stopDrag.bind(this));
         }
-
     }
 
     /**
@@ -271,11 +244,40 @@ export class TheaSlider {
      * @param {Number} pageX Координаы курсора во время перетаскивания (берется из event). Вызывается толко в обработчике "mousemove".
      * @private
      */
-    _dragSlide({ pageX }) {
-        const difference = pageX - this._config.settings.draggable.startDragPosition;
-        if(Math.abs(difference) >= this._config.settings.draggable.dragRequiredOffset) {
-            this._slide.bind(this, { type: difference < 0 ? "prev" : "next" })();
+    _handleMouseDrag({ pageX }) {
+        if(this._config.settings.draggable.currently) {
+            const difference = pageX - this._config.settings.draggable.startDragPosition;
+            if(Math.abs(difference) >= this._config.settings.draggable.dragRequiredOffset) {
+                this._slide.call(this, { type: difference < 0 ? "prev" : "next" });
+            }
         }
+    }
+
+    /**
+     * Обрабатывает события mousedown.
+     * @param {Object} event
+     * @private
+     */
+    _handleMouseDown(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        this._container.classList.add("being-dragged");
+        this._config.settings.draggable.startDragPosition = event.pageX;
+        this._config.settings.draggable.currently = true;
+    }
+
+    /**
+     * Обрабатывает события mouseup.
+     * @param {Object} event
+     * @private
+     */
+    _stopDrag(event) {
+        this._container.classList.remove("being-dragged");
+        this._container.removeEventListener("mousemove", this._handleMouseUp);
+
+        this._config.settings.draggable.currently = false;
+        this._config.settings.draggable.startDragPosition = 0;
+        return false;
     }
 
     /**
@@ -297,10 +299,9 @@ export class TheaSlider {
      */
     _autoplay() {
         const $ = this;
-        $._config.settings.autoplay.timerId = setTimeout(function autoplayTimeout() {
+        $._config.settings.autoplay.timerId = setInterval(() => {
             if($._config.settings.state.status !== "paused") {
-                $._slide.bind($, { type: $._config.settings.reversed ? "prev" : "next" })();
-                $._config.settings.autoplay.timerId = setTimeout(autoplayTimeout, $._config.offset.speed);
+                $._slide.call($, {type: $._config.settings.reversed ? "prev" : "next"});
             }
         }, $._config.offset.speed);
     }
@@ -311,16 +312,11 @@ export class TheaSlider {
      */
     _togglePause() {
         const status = this._config.settings.state.status === "active" ? "paused" : "active";
-
-        if(status === "paused") {
-            clearTimeout(this._config.settings.autoplay.timerId);
-        }
+        this._config.settings.state.status = status;
 
         if(this._config.controls.buttons.toggle) {
             this._config.controls.buttons.toggle.dataset.status = status;
         }
-
-        this._config.settings.state.status = status;
     }
 
     /**
@@ -330,7 +326,6 @@ export class TheaSlider {
      * @private
      */
     _able({ type, index = -1 }) {
-
         if(!this._config.settings.state.cooldown) {
 
             if(type === "prev") {
@@ -373,13 +368,14 @@ export class TheaSlider {
 
             if(type === "scroll") {
                 this._config.offset.left = -this._config.offset.width * ((this._config.settings.infinite) ? index + 1 : index);
-                this._config.slide.activeIndex =  index;
+                this._config.slide.activeIndex = index;
             }
 
-            this._container.style.left = `${ this._config.offset.left }px`;
+            this._container.style.left = `${this._config.offset.left}px`;
 
             this._container.ontransitionend =  () => {
                 this._container.style.transition = "left 0s ease 0s";
+                this._config.slideByDot = false;
 
                 if(this._config.slide.activeIndex === -1 || this._config.slide.activeIndex === this._config.slide.count) {
                     this._config.offset.left = this._config.slide.activeIndex === -1 ? this._config.offset.max : this._config.offset.min;
@@ -401,24 +397,24 @@ export class TheaSlider {
     /**
      * Переход к предыдущему слайду.
      */
-    prev() {
-        window.event.stopPropagation();
+    prev(event) {
+        event.stopPropagation();
         this._slide({ type: "prev" });
     }
 
     /**
      * Переход к следующему слайду.
      */
-    next() {
-        window.event.stopPropagation();
+    next(event) {
+        event.stopPropagation();
         this._slide({ type: "next" });
     }
 
     /**
      * Ставит на паузу или возобновляет работу слайдера.
      */
-    toggle() {
-        window.event.stopPropagation();
+    toggle(event) {
+        event.stopPropagation();
         this._togglePause();
         this._autoplay();
     }

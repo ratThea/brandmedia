@@ -1,5 +1,5 @@
 // Классы для работы вкладок.
-// Работает вместе с файлом стилей thea-tabs.js
+// Работает вместе с файлом thea-tabs.js
 .thea-tabs {
   &__header {
     display: flex;
@@ -7,10 +7,28 @@
   &__button {
     cursor: pointer;
   }
-  &__content {
+
+  // Классы вершаются на элемены с классом thea-tabs__content, в зависимости от того, как надо скрыть элемент.
+  &_display-base {
     display: none;
-    &.active {
-      display: flex;
-    }
+  }
+
+  &_display-show {
+    display: flex;
+  }
+
+  &_visually-base {
+    display: flex;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &_visually-show {
+    visibility: visible;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
   }
 }
