@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Скрытие/показ навигации слайдера на главной странице при клике на экран:
-        if(target.closest(".slider__screen-wrapper")) {
+        if(target.closest("#presentation-slider")) {
             funcs.toggleElement( document.getElementById("presentation-slider-nav"), "active" )
         }
 
@@ -38,8 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Слайдер на главной странице (index.html):
     const presentationSlider = new TheaSlider({
         root: document.getElementById("presentation-slider"),
-        speed: 1.5,
-        draggable: false,
         controls: {
             buttons: {
                 prev: document.getElementById("presentation-slider-prev"),
@@ -61,7 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 container: document.getElementById("portfolio-slider-dots"),
                 dotClass: "slider__dot"
             }
-        }
+        },
+        draggable: true
     });
 
 });
