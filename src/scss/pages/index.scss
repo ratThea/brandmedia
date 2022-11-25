@@ -117,10 +117,10 @@ section {
         }
         &.slider__toggle {
           margin: 0 40px;
-          &[data-status="paused"]::before {
+          &[data-thea-slider-status="paused"]::before {
             content: "\f04b";
           }
-          &[data-status="active"]::before {
+          &[data-thea-slider-status="active"]::before {
             content: "\f04c";
           }
         }
